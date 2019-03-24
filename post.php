@@ -23,7 +23,7 @@
 				</div>
 				<?php if($this->options->copyright == 'on'):?>
 					<div>
-						<ul class="post-copyright">
+                        <ul class="post-copyright" style="margin: 0 0 0;">
 							<li>
 								<strong>本文作者：</strong><?php $this->author(); ?>
 							</li>

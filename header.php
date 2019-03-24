@@ -133,16 +133,16 @@ if ($this->options->style_BG) {
                         					</div>
                         					<div id="search-box">
                         						<form id="search" method="post" action="./" role="search">
-                        							<input autocomplete="off" type="text" name="s" id="menu-search" placeholder="Type something~" />
+                                                    <input autocomplete="off" type="text" name="s" id="menu-search"
+                                                           style="border-radius: 100px" placeholder="Type something~"/>
                         						</form>
-                        					</div><br />
-                        					<?php if($this->options->hitokoto == 'on'):?>
-                        						<?php $this->need('hitokoto.php') ?>
-                        					<?php endif;?>
-
+                                            </div>
                         				</div>
-
                         			</div>
+        <div class="hitokoto"><?php if ($this->options->hitokoto == 'on'): ?>
+                <?php $this->need('hitokoto.php') ?>
+            <?php endif; ?>
+        </div>
                         		</div>
                         	</header>
 

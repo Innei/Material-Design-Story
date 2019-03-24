@@ -21,7 +21,7 @@
             <?php if ($this->have()): ?>
     	    <?php while($this->next()): ?>
                 <li class="post-item grid-item" itemscope itemtype="http://schema.org/BlogPosting">
-					<a class="post-link" href="<?php $this->permalink() ?>">
+                    <a class="colorgradient-card" href="<?php $this->permalink() ?>">
 					    <h3 class="post-title"><time class="index-time" datetime="<?php $this->date('c'); ?>" itemprop="datePublished"><?php $this->date('M j, Y'); ?></time><br><?php $this->title() ?></h3>
 					    <div class="post-meta">
 						    <?php echo $this->category; ?>

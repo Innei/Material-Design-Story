@@ -42,7 +42,7 @@
 
 #main > ul > li:nth-child(5) > .colorgradient-card {
     background-image: linear-gradient(153deg, rgba(73, 220, 249, 0.16) 0%, #fff8f8 95%);
-    box-shadow: 0 3px 15px 0 rgba(252, 249, 249, 0.8)
+    box-shadow: 0 3px 15px 0 rgba(220, 226, 223, 0.4)
 }
 
 #main > ul > li:nth-child(6) > .colorgradient-card {

@@ -48,7 +48,7 @@
             document.getElementById('comments').style.display='block';
         }
     }
-}
+    };
 
 function isMenu(){
     if(document.getElementById('menu-1').style.display=='inline'){
