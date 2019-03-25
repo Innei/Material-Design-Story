@@ -45,6 +45,10 @@
     .post-title > span {
         font-size: 18px;
     }
+
+    .post-title > h3 {
+        line-height: 30px;
+    }
 }
 
 #main > ul > li:nth-child(2) > .colorgradient-card {

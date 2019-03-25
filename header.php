@@ -35,9 +35,10 @@ if ($this->options->style_BG) {
 		<link type="text/css" rel="stylesheet" href="<?php $this->options->themeUrl('assert/css/prism.css'); ?>">
 		<link type="text/css" rel="stylesheet" href="<?php $this->options->themeUrl('assert/css/zoom.css'); ?>">
 		<link type="text/css" rel="stylesheet" href="<?php $this->options->themeUrl('assert/css/main.css'); ?>">
-            <link type="text/css" rel="stylesheet" href="<?php $this->options->themeUrl('assert/css/card.css'); ?>">
+    <link type="text/css" rel="stylesheet" href="<?php $this->options->themeUrl('assert/css/card.css'); ?>">
 		<?php if($this->options->isIconNav == 'on'): ?>
-			<link type="text/css" rel="stylesheet" href="<?php $this->options->themeUrl('assert/css/twemoji-awesome.css'); ?>">
+            <link type="text/css" rel="stylesheet"
+                  href="<?php $this->options->themeUrl('assert/css/twemoji-awesome.css'); ?>">
 		<?php endif; ?>
 
     <!--[if lt IE 9]>
