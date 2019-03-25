@@ -8,7 +8,9 @@
 				<h1 class="post-title" itemprop="name headline"><?php $this->title() ?></h1>
 				<div class="post-meta">
 					<p>Written by <a itemprop="name" href="<?php $this->author->permalink(); ?>" rel="author"><?php $this->author(); ?></a>
-					 <?php if($this->options->showCommentNum == 'on'): echo "with ".$this->commentsNum." comment(s) on"; else: ?>
+                        <?php if ($this->options->showCommentNum == 'on'):
+                            if ($this->commentsNum == 0) echo "with ♥ on "; else echo "with " . $this->commentsNum . " comment(s) on";
+                        else: ?>
 					 	with ♥ on 
 					 <?php endif; ?>
 					 <time datetime="<?php $this->date('c'); ?>" itemprop="datePublished"><?php $this->date('F j, Y'); ?></time> in <?php $this->category(', ', true, 'none'); ?></p>
