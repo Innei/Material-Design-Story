@@ -9,10 +9,8 @@
     padding: 20px;
     font-family: Helvetica;
     background-image: linear-gradient(153deg, #e2eeeb 0%, #deffff 95%);
-    box-shadow: 0 3px 15px 0 rgba(224, 227, 230, 0.4);
+    box-shadow: 0 3px 15px 0 rgba(87, 87, 87, 0.2);
     border-radius: .625rem;
-    padding: 1.5625rem;
-    width: 100%;
     will-change: transform;
     transition: transform 0.35s cubic-bezier(0.215, 0.61, 0.355, 1)
 }
@@ -25,37 +23,54 @@
     transform: perspective(1px) scale(0.96);
 }
 
+@media screen and (max-width: 420px) {
+    .post-list > li {
+        width: 180px;
+        height: 160px;
+        padding: 0 10px;
+    }
+
+    .post-list {
+        width: 370px;
+    }
+
+    .colorgradient-card > h3 > time {
+        display: none;
+    }
+
+    .colorgradient-card > .post-dec {
+        display: none;
+    }
+
+    .post-title > span {
+        font-size: 18px;
+    }
+}
+
 #main > ul > li:nth-child(2) > .colorgradient-card {
     background-image: linear-gradient(153deg, #e2d4d4 0%, #fffdff 95%);
-    box-shadow: 0 3px 15px 0 rgba(223, 215, 215, 0.4)
 }
 
 #main > ul > li:nth-child(3) > .colorgradient-card {
     background-image: linear-gradient(153deg, #afecff 0%, #ebebf3 95%);
-    box-shadow: 0 3px 15px 0 rgba(230, 229, 235, 0.5)
 }
 
 #main > ul > li:nth-child(4) > .colorgradient-card {
     background-image: linear-gradient(153deg, #e7f1db 0%, #d9e7e4 95%);
-    box-shadow: 0 3px 15px 0 rgba(220, 226, 223, 0.4)
 }
 
 #main > ul > li:nth-child(5) > .colorgradient-card {
     background-image: linear-gradient(153deg, rgba(73, 220, 249, 0.16) 0%, #fff8f8 95%);
-    box-shadow: 0 3px 15px 0 rgba(220, 226, 223, 0.4)
 }
 
 #main > ul > li:nth-child(6) > .colorgradient-card {
     background-image: linear-gradient(153deg, #e7e0db 0%, #f7f4ee 95%);
-    box-shadow: 0 3px 15px 0 rgba(240, 239, 237, 0.4)
 }
 
 #main > ul > li:nth-child(7) > .colorgradient-card {
     background-image: linear-gradient(153deg, #eee6e6 0%, #eee6eb 95%);
-    box-shadow: 0 3px 15px 0 rgba(240, 235, 237, 0.35)
 }
 
 #main > ul > li:nth-child(8) > .colorgradient-card {
     background-image: linear-gradient(153deg, #ebe6f0 0%, #e1f3f0 95%);
-    box-shadow: 0 3px 15px 0 rgba(235, 240, 245, 0.4)
 }

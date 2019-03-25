@@ -754,10 +754,10 @@ blockquote ul, blockquote ol {
 	position: relative;
 	overflow: hidden;
     opacity: 0;
-    -webkit-transition: all 2s;
-    -moz-transition: all 2s;
-    -ms-transition: all 2s;
-    -o-transition: all 2s;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -ms-transition: all 1s;
+    -o-transition: all 1s;
 }
 .colorgradient-card .post-dec p {
 	width: 100px;
@@ -774,10 +774,10 @@ blockquote ul, blockquote ol {
 .colorgradient-card .post-dec:hover {
 	opacity: 1;
     transform: scale(1.0);
-    -webkit-transition: all 2s;
-    -moz-transition: all 2s;
-    -ms-transition: all 2s;
-    -o-transition: all 2s;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -ms-transition: all 1s;
+    -o-transition: all 1s;
 }
 .modified-date  {
     height: 50px;
@@ -836,7 +836,8 @@ em{
     position: absolute;
     top: 4em;
 }
-@media screen and (max-width: 400px) {
+
+@media screen and (max-width: 420px) {
     .avatar-right {
         display: none;
     }
