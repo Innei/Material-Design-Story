@@ -1,8 +1,6 @@
 <?php
 /**
- * 每个人都有属于自已的故事，我们编织着、叙述着，只为了那个必定动人的结局。
- * 爱上自已的故事，爱上别人的故事，交织着的，是美好，是快乐，是幸福。
- * 本项目属于 ProjectNatureSimple
+ * 这是一个未完成的二次开发主题
  * 
  * @package Card Design
  * @author Trii Hsia && yiny
