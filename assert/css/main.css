@@ -814,6 +814,7 @@ blockquote ul, blockquote ol {
 @media (max-width: 970px) {
     .post-list {
         width: 640px;
+        margin-top: 3%;
     }
 }
 
@@ -982,6 +983,9 @@ em {
         display: none;
     }
 
+    #go-top {
+        display: none;
+    }
     .header-logo span.b {
         margin-right: 0px;
     }
