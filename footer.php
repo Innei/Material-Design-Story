@@ -11,14 +11,73 @@
                 .
                 <?php
 
-                if ($this->options->runtime == 'JS') { ?>
-                    <script src="<?php $this->options->themeUrl('assert/js/extra.js'); ?>"></script><?php
-                    echo '<p>本站已萌萌哒运行了 <span id="span_dt_dt"></span></p>';
-                } elseif ($this->options->runtime == 'PHP') {
+                if ($this->options->runtime == 'JS') : ?>
+                    <p>本站已萌萌哒运行了<span id="showDays"></span></p>
+                    <script>
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var birthDay = Date.UTC(2019, 02, 14, 14, 00, 00);
+                        setInterval(function () {
+                            var today = new Date();
+                            var todayYear = today.getFullYear();
+                            var todayMonth = today.getMonth() + 1;
+                            var todayDate = today.getDate();
+                            var todayHour = today.getHours();
+                            var todayMinute = today.getMinutes();
+                            var todaySecond = today.getSeconds();
+                            var now = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                            var diff = now - birthDay;
+                            var diffYears = Math.floor(diff / years);
+                            var diffDays = Math.floor((diff / days) - diffYears * 365);
+                            var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                            var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+                            var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+                            document.getElementById('showDays').innerHTML = "" + diffYears + "年" + diffDays + "天" + diffHours + "小时" + diffMinutes + "分钟" + diffSeconds + "秒";
+                        }, 1000);
+                    </script>
+                <?php elseif ($this->options->runtime == 'PHP'):
                     $this->need('time.php');
-                }
 
+                endif;
                 ?>
+            </div>
+        </div>
+        <div id="footer-infor">
+            <div class="footer-item">
+                <h3>站点信息：</h3>
+                <ul>
+                    <?php Typecho_Widget::widget('Widget_Stat')->to($stat); ?>
+                    <li>文章：<?php $stat->publishedPostsNum() ?> 篇</li>
+                    <li>分类：<?php $stat->categoriesNum() ?> 个</li>
+                    <li>评论：<?php $stat->publishedCommentsNum() ?> 条</li>
+                    <li>页面：<?php $stat->publishedPagesNum() ?> 个</li>
+                </ul>
+            </div>
+            <div class="footer-item">
+                <h3>最新文章：</h3>
+                <ul>
+                    <?php $this->widget('Widget_Contents_Post_Recent', 'pageSize=6')->parse('<li><a href="{permalink}" target="_blank">{title}</a></li>'); ?>
+                </ul>
+            </div>
+            <div class="footer-item">
+                <h3>时光机：</h3>
+                <ul>
+                    <?php $this->widget('Widget_Contents_Post_Date', 'type=month&format=Y 年 m 月&limit=6')->parse('<li><a href="{permalink}" rel="nofollow" target="_blank">{date}</a></li>'); ?>
+                </ul>
+            </div>
+            <div class="footer-item">
+                <h3>最近评论：</h3>
+                <div>
+                    <?php $this->widget('Widget_Comments_Recent', 'pageSize=5')->to($comments); ?>
+                    <?php while ($comments->next()): ?>
+                        <a href="<?php $comments->permalink(); ?>" rel="nofollow" target="_blank"><img
+                                    src="<?php echo Typecho_Common::gravatarUrl($comments->mail, 32, 'X', 'wavatar', $this->request->isSecure()) ?>"/><?php $comments->author(false); ?>
+                            ：<?php $comments->excerpt(10, '...'); ?></a>
+                    <?php endwhile; ?>
+                </div>
             </div>
         </div>
     </div>

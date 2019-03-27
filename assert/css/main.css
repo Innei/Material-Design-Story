@@ -993,6 +993,7 @@ em {
     .header-logo span.w {
         margin-right: 0px;
     }
+
 }
 
 #go-top {
@@ -1022,4 +1023,29 @@ em {
 
 #go-top:hover {
     background-color: #ff9fbf;
+}
+
+#footer-infor {
+    margin: 0 auto;
+}
+
+#footer-infor ul {
+    list-style: none;
+}
+
+#footer-infor .footer-item {
+    float: left;
+    width: 25%;
+}
+
+@media screen and (max-width: 950px) {
+    #footer-infor .footer-item {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    #footer-infor .footer-item {
+        width: 100%;
+    }
 }
