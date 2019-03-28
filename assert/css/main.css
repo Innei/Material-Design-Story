@@ -396,7 +396,7 @@ blockquote ul, blockquote ol {
 .posti {
     position: relative;
     width: 100%;
-    max-width: 728px;
+    max-width: 800px;
     margin: 0 auto;
     margin-bottom: 20px;
 }
@@ -974,7 +974,7 @@ em {
     top: 4em;
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 550px) {
     .avatar-right {
         display: none;
     }
@@ -1047,5 +1047,9 @@ em {
 @media screen and (max-width: 550px) {
     #footer-infor {
         display: none;
+    }
+
+    .posti {
+        margin-top: -5%;
     }
 }

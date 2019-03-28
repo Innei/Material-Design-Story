@@ -109,6 +109,8 @@
                 document.getElementById('comments').style.display = 'block';
             }
         }
+
+        $('.posti').fadeTo("slow", 1.0);
     };
 
     function isMenu() {
@@ -184,6 +186,7 @@
             })
         });
     });
+
 </script>
 <div id="go-top"></div>
 <?php $this->footer(); ?>
