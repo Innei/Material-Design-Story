@@ -19,7 +19,7 @@
                         var hours = minutes * 60;
                         var days = hours * 24;
                         var years = days * 365;
-                        var birthDay = Date.UTC(2019, 02, 14, 14, 00, 00);
+                        var birthDay = Date.UTC(2019, 2, 14, 14, 30, 10);
                         setInterval(function () {
                             var today = new Date();
                             var todayYear = today.getFullYear();
@@ -31,11 +31,11 @@
                             var now = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
                             var diff = now - birthDay;
                             var diffYears = Math.floor(diff / years);
-                            var diffDays = Math.floor((diff / days) - diffYears * 365);
+                            var diffDays = Math.floor((diff / days));
                             var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
                             var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
                             var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
-                            document.getElementById('showDays').innerHTML = "" + diffYears + "年" + diffDays + "天" + diffHours + "小时" + diffMinutes + "分钟" + diffSeconds + "秒";
+                            document.getElementById('showDays').innerHTML = "" + diffDays + "天" + diffHours + "小时" + diffMinutes + "分钟" + diffSeconds + "秒";
                         }, 1000);
                     </script>
                 <?php elseif ($this->options->runtime == 'PHP'):
@@ -59,19 +59,19 @@
             <div class="footer-item">
                 <h3>最新文章：</h3>
                 <ul>
-                    <?php $this->widget('Widget_Contents_Post_Recent', 'pageSize=6')->parse('<li><a href="{permalink}" target="_blank">{title}</a></li>'); ?>
+                    <?php $this->widget('Widget_Contents_Post_Recent', 'pageSize=4')->parse('<li><a href="{permalink}" target="_blank">{title}</a></li>'); ?>
                 </ul>
             </div>
             <div class="footer-item">
                 <h3>时光机：</h3>
                 <ul>
-                    <?php $this->widget('Widget_Contents_Post_Date', 'type=month&format=Y 年 m 月&limit=6')->parse('<li><a href="{permalink}" rel="nofollow" target="_blank">{date}</a></li>'); ?>
+                    <?php $this->widget('Widget_Contents_Post_Date', 'type=month&format=Y 年 m 月&limit=4')->parse('<li><a href="{permalink}" rel="nofollow" target="_blank">{date}</a></li>'); ?>
                 </ul>
             </div>
             <div class="footer-item">
                 <h3>最近评论：</h3>
                 <div>
-                    <?php $this->widget('Widget_Comments_Recent', 'pageSize=5')->to($comments); ?>
+                    <?php $this->widget('Widget_Comments_Recent', 'pageSize=4')->to($comments); ?>
                     <?php while ($comments->next()): ?>
                         <a href="<?php $comments->permalink(); ?>" rel="nofollow" target="_blank"><img
                                     src="<?php echo Typecho_Common::gravatarUrl($comments->mail, 32, 'X', 'wavatar', $this->request->isSecure()) ?>"/><?php $comments->author(false); ?>

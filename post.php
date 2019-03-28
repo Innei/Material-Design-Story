@@ -51,7 +51,12 @@
 				<?php endif ;?>
 				<div style="display:block;margin-bottom:2em;" class="clearfix">
 					<section style="float:left;">
-						<span itemprop="keywords" class="tags"><?php _e('tag(s): '); ?><?php $this->tags(', ', true, 'none'); ?></span>
+						<span itemprop="keywords" class="tags">
+                            <?php if (count($this->tags) == 0): pass;
+                            else:
+                                _e('tag(s): ');
+                                $this->tags(', ', true); endif; ?>
+                        </span>
 					</section>
 					<section style="float:right;">
 						<span><a id="btn-comments" href="javascript:isComments();">show comments</a></span> · <span><a href="javascript:goBack();">back</a></span> · 

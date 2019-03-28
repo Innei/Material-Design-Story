@@ -1045,7 +1045,7 @@ em {
 }
 
 @media screen and (max-width: 550px) {
-    #footer-infor .footer-item {
-        width: 100%;
+    #footer-infor {
+        display: none;
     }
 }
