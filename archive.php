@@ -23,7 +23,8 @@
                 <li class="post-item grid-item" itemscope itemtype="http://schema.org/BlogPosting">
                     <a class="colorgradient-card" href="<?php $this->permalink() ?>">
 					    <h3 class="post-title"><time class="index-time" datetime="<?php $this->date('c'); ?>" itemprop="datePublished"><?php $this->date('M j, Y'); ?></time><br><?php $this->title() ?></h3>
-                        <?php if ($this->category == null):; ?>
+                        <?php if ($this->category == null): ?>
+                        <div class="post-meta" style="display: none;">
                         <?php else: ?>
                         <div class="post-meta">
 						    <?php echo $this->category; ?>
