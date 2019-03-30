@@ -836,6 +836,12 @@ blockquote ul, blockquote ol {
     max-width: 100%;
 }
 
+.fixed-bottom {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
 @media only screen and (max-width: 767px) {
     .comment-parent .comment-children {
         margin-left: 0;

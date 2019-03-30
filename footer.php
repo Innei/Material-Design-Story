@@ -184,6 +184,23 @@
         window.history.back();
     }
 
+    function footerPosition() {
+        $("footer").removeClass("fixed-bottom");
+        var contentHeight = document.body.scrollHeight,
+            winHeight = window.innerHeight;
+        if (document.getElementsByClassName("post-content")[0]) {
+            var winImgNum = document.getElementsByClassName("post-content")[0].getElementsByTagName("img").length;
+        } else {
+            var winImgNum = 0;
+        }
+        if (!(contentHeight > winHeight) && winImgNum <= 1) {
+            $("footer").addClass("fixed-bottom");
+        }
+    }
+
+    footerPosition();
+    $(window).resize(footerPosition);
+
     $(function () {
         var top = $("#go-top");
         $(window).scroll(function () {
