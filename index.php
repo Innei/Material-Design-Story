@@ -4,7 +4,7 @@
  * 
  * @package Card Design
  * @author Trii Hsia && yiny
- * @version y1.0@
+ * @version y1.0@#1903
  * @link https://yumoe.com
  */
 

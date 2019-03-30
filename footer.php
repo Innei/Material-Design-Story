@@ -10,7 +10,6 @@
                 <?php _e('Using <a target="_blank" href="http://www.typecho.org">Typecho</a> & <a target="_blank" href="https://github.com/SorashitaInnei/Material-Design-Story">Card Design</a>'); ?>
                 .
                 <?php
-
                 if ($this->options->runtime == 'JS') : ?>
                     <p>本站已萌萌哒运行了<span id="showDays"></span></p>
                     <script>
@@ -87,6 +86,12 @@
 <script src="<?php $this->options->themeUrl('assert/js/zoom-vanilla.min.js'); ?>"></script>
 <script>
     window.onload = function () {
+        <?php if ($this->is('post')): ?>
+        <?php $postConfig = parse_title($this->content);?>
+        <?php if ($postConfig): ?>
+        isMenu2('auto');
+        <?php endif; ?>
+        <?php endif; ?>
         <?php if($this->options->isAutoNav == 'on'): ?>
         var b = document.getElementsByClassName('b');
         var w = document.getElementsByClassName('w');
@@ -135,15 +140,18 @@
         }
     }
 
-    function isMenu2() {
+    function isMenu2(c = 'none') {
         if (document.getElementById('torTree')) {
-            if (document.getElementById('torTree').style.display == 'block') {
-                $('#torTree').fadeOut(300);
+            if ($("#torTree").attr('style') == 'display: none;') {
+                $("#torTree").fadeIn(300);
+                $("#torTree").css('display', 'inline-block');
             } else {
-                $('#torTree').fadeIn(300);
+                $("#torTree").fadeOut(300);
             }
         } else {
-            alert('人家是导航树啦！只有在特定的文章页面才会出现哦...');
+            if (c != 'auto') {
+                alert('人家是导航树哦！只有在特定的文章页面才会出现哦...');
+            }
         }
     }
 
