@@ -70,12 +70,13 @@
             <div class="footer-item">
                 <h3>最近评论：</h3>
                 <div>
-                    <?php $this->widget('Widget_Comments_Recent', 'pageSize=4')->to($comments); ?>
-                    <?php while ($comments->next()): ?>
-                        <a href="<?php $comments->permalink(); ?>" rel="nofollow" target="_blank"><img
-                                    src="<?php echo Typecho_Common::gravatarUrl($comments->mail, 32, 'X', 'wavatar', $this->request->isSecure()) ?>"/><?php $comments->author(false); ?>
-                            ：<?php $comments->excerpt(10, '...'); ?></a>
-                    <?php endwhile; ?>
+                    <ul>
+                        <?php $this->widget('Widget_Comments_Recent', 'pageSize=4')->to($comments); ?>
+                        <?php while ($comments->next()): ?>
+                            <li><a href="<?php $comments->permalink(); ?>" rel="nofollow"
+                                   target="_blank"><?php $comments->author(false); ?>
+                                    ：<?php $comments->excerpt(10, '...'); ?></a></li>
+                        <?php endwhile; ?></ul>
                 </div>
             </div>
         </div>
@@ -115,7 +116,6 @@
             }
         }
 
-        $('.posti').fadeTo("slow", 1.0);
     };
 
     function isMenu() {
