@@ -1109,3 +1109,19 @@ quote {
     margin: 0 0 2em 0;
     position: relative;
 }
+
+quote:before {
+    content: '↓';
+    background-color: rgba(255, 140, 169, 0.88);
+    position: absolute;
+    left: 45%;
+    margin-top: -3%;
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    text-align: center;
+    line-height: 33px;
+    font-weight: 700;
+    font-size: 30px;
+}
