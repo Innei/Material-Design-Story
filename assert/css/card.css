@@ -7,7 +7,6 @@
     width: 100%;
     height: 100%;
     padding: 20px;
-    font-family: Helvetica;
     background-image: linear-gradient(153deg, rgba(197, 229, 238, 0.3) 0%, #deffff 95%);
     box-shadow: 0 3px 15px 0 rgba(87, 87, 87, 0.2);
     border-radius: .625rem;
@@ -83,7 +82,7 @@
     #main .posti {
         border-radius: .625rem;
         overflow: hidden;
-        background-image: linear-gradient(153deg, rgba(73, 220, 249, 0.1) 0%, rgba(255, 140, 169, 0.06) 95%);
+        background-image: linear-gradient(153deg, rgba(255, 200, 240, 0.1) 0%, rgba(255, 140, 169, 0.06) 95%);
         box-shadow: 0 3px 15px 0 rgba(87, 87, 87, 0.4);
         padding: 30px;
         transition: all .5s;

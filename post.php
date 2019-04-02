@@ -68,7 +68,7 @@
             <?php
             $torHTML = post_tor($this->content);
             if ($torHTML != '') {
-                print_r('<div id="postTorTree"><div id="torTree" style="display: none;"><div class="torArcT"><div class="torArcTile colorgradient-card">' . $torHTML . '</div></div></div></div>');
+                print_r('<div id="postTorTree"><div id="torTree" style="display: none;"><div class="torArcT"><div class="torArcTile">' . $torHTML . '</div></div></div></div>');
             }
             ?>
 		</div>
