@@ -437,10 +437,15 @@ blockquote ul, blockquote ol {
     margin: 2em 0 2em 2em;
 }
 
-.posti ul li {
-    /*list-style: circle;*/
+ul li:before {
+    content: '> ';
+    position: absolute;
+    margin-left: 15px;
 }
 
+li {
+    list-style: none;
+}
 .posti .a_tag {
     display: flow-root;
 }
@@ -1086,6 +1091,7 @@ em {
 #footer-infor .footer-item {
     float: left;
     width: 25%;
+    text-align: left;
 }
 
 @media screen and (max-width: 950px) {
