@@ -440,7 +440,7 @@ blockquote ul, blockquote ol {
 ul li:before {
     content: '> ';
     position: absolute;
-    margin-left: 15px;
+    margin-left: -15px;
 }
 
 li {
