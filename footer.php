@@ -213,6 +213,16 @@
     });
 
 </script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=<?php $this->options->analysis() ?>"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-137916373-1');
+</script>
+
 <div id="go-top"></div>
 <?php $this->footer(); ?>
 </body>
