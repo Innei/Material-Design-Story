@@ -85,6 +85,7 @@
 <script src="https://lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="<?php $this->options->themeUrl('assert/js/prism.js'); ?>"></script>
 <script src="<?php $this->options->themeUrl('assert/js/zoom-vanilla.min.js'); ?>"></script>
+
 <script>
     window.onload = function () {
         <?php if ($this->is('post')): ?>
@@ -212,15 +213,37 @@
         });
     });
 
+    var article = $('#main > article');
+    var card = $('#main > ul > li > a.colorgradient-card')
+    $(document).ready(function () {
+        article.toggleClass('fadeInUp animated');
+        article.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function (e) {
+            $(e.target).removeClass('fadeInUp animated');
+
+        });
+
+        });
+    $(document).ready(function () {
+        card.toggleClass('zoomIn animated');
+        card.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function (e) {
+            $(e.target).removeClass('zoomIn animated');
+
+        });
+
+    });
 </script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=<?php $this->options->analysis() ?>"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
     gtag('js', new Date());
 
-    gtag('config', 'UA-137916373-1');
+    gtag('config', '<?php $this->options->analysis() ?>');
 </script>
 
 <div id="go-top"></div>
