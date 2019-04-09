@@ -31,7 +31,7 @@ function themeConfig($form)
         'off', _t('替换表情'), _t('将导航栏中的 1,2,3 替换成 Emoji 图标'));
     $form->addInput($isIconNav);
 
-    $analysis = new Typecho_Widget_Helper_Form_Element_Text('analysis', NULL, NULL, _t('Google Analysis跟踪代码', _t('类似 UA-XXX')));
+    $analysis = new Typecho_Widget_Helper_Form_Element_Text('analysis', NULL, NULL, _t('Google Analysis跟踪代码'), _t('类似 UA-XXX'));
     $form->addInput($analysis);
 
     $runtime = new Typecho_Widget_Helper_Form_Element_Radio('runtime',

@@ -7,7 +7,7 @@
             <div class="col-12">
                 &copy; <?php echo date('Y'); ?> <a
                         href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a>.
-                <?php _e('Using <a target="_blank" href="http://www.typecho.org">Typecho</a> & <a target="_blank" href="https://github.com/SorashitaInnei/Material-Design-Story">Card Design</a>'); ?>
+                <?php _e('Using <a target="_blank" href="http://www.typecho.org">Typecho</a> & <a target="_blank" href="https://github.com/Innei/Material-Design-Story">Card Design</a>'); ?>
                 .
                 <?php
                 if ($this->options->runtime == 'JS') : ?>
