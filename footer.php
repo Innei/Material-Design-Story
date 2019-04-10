@@ -213,17 +213,22 @@
         });
     });
 
+    <?php if($this->is('post')):?>
     var article = $('#main > article');
-    var card = $('#main > ul > li > a.colorgradient-card')
     $(document).ready(function () {
+        article.removeClass('hidden');
         article.toggleClass('fadeInUp animated');
         article.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function (e) {
             $(e.target).removeClass('fadeInUp animated');
 
         });
 
-        });
+    });
+    <?php endif;?>
+    <?php if($this->is('index')):?>
     $(document).ready(function () {
+        var card = $('#main > ul > li > a.colorgradient-card');
+        card.removeClass('hidden');
         card.toggleClass('zoomIn animated');
         card.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function (e) {
             $(e.target).removeClass('zoomIn animated');
@@ -231,8 +236,10 @@
         });
 
     });
+    <?php endif;?>
 </script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
+<?php if($this->options->analysics != null):?>
 <script async src="https://www.googletagmanager.com/gtag/js?id=<?php $this->options->analysis() ?>"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
@@ -245,7 +252,7 @@
 
     gtag('config', '<?php $this->options->analysis() ?>');
 </script>
-
+<?php endif;?>
 <div id="go-top"></div>
 <?php $this->footer(); ?>
 </body>

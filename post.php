@@ -4,7 +4,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div id="main" class="col-12 clearfix" role="main">
-			<article class="posti" itemscope itemtype="http://schema.org/BlogPosting">
+			<article class="posti hidden" itemscope itemtype="http://schema.org/BlogPosting" >
 				<h1 class="post-title" itemprop="name headline"><?php $this->title() ?></h1>
 				<div class="post-meta">
 					<p>Written by <a itemprop="name" href="<?php $this->author->permalink(); ?>" rel="author"><?php $this->author(); ?></a>

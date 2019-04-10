@@ -639,7 +639,9 @@ li {
 .hide {
     display: none;
 }
-
+.hidden {
+    opacity: 0;
+}
 .gen .page-navigator {
     margin: 3.75rem 0 3rem 0;
 }
