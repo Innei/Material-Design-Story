@@ -1,7 +1,7 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 </div><!-- end #body -->
 
-<footer id="footer" role="contentinfo">
+<footer id="footer" role="contentinfo" style="position: relative;">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
@@ -213,7 +213,7 @@
         });
     });
 
-    <?php if($this->is('post')):?>
+    <?php if($this->is('post') || $this->is('page-link') || $this->is('page-archive')):?>
     var article = $('#main > article');
     $(document).ready(function () {
         article.removeClass('hidden');
