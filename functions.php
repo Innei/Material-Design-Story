@@ -10,7 +10,7 @@ function themeConfig($form)
     $shortcut_ico = new Typecho_Widget_Helper_Form_Element_Text('shortcut_ico', NULL, NULL, _t('favicon设置'), _t('填写网站图标地址，留空为关闭, 一般为http://www.yourblog.com/image.png,支持 https:// 或 //'));
     $form->addInput($shortcut_ico->addRule('xssCheck', _t('请不要在图片链接中使用特殊字符')));
 
-    $NAME = new Typecho_Widget_Helper_Form_Element_Text('NAME', NULL, 'INNEI', _t('网页标题设置'), _t('仅支持5个字符, 多了会省略, 少了会空白, 默认为INNEI, 请参考原主题修改大于5个字符'));
+    $NAME = new Typecho_Widget_Helper_Form_Element_Text('NAME', NULL, 'こんにちは', _t('网页标题设置'), _t('仅支持5个字符, 多了会省略, 少了会空白, 请参考原主题修改大于5个字符'));
     $form->addInput($NAME);
 
     $isRSS = new Typecho_Widget_Helper_Form_Element_Radio('isRSS',
@@ -41,6 +41,9 @@ function themeConfig($form)
         ),
         'JS', _t('网站显示运行时间设置'), _t('PHP为显示服务器运行时间,JS为自定义时间'));
     $form->addInput($runtime);
+
+    $jstime = new Typecho_Widget_Helper_Form_Element_Text('jstime', NULL, '2019, 2, 14, 14, 30, 10', _t('建站时间'), _t('格式: 2019, 2, 14, 14, 30, 10'));
+    $form->addInput($jstime);
 
     $hitokoto = new Typecho_Widget_Helper_Form_Element_Radio('hitokoto',
         array('on' => _t('显示'),

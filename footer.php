@@ -18,7 +18,7 @@
                         var hours = minutes * 60;
                         var days = hours * 24;
                         var years = days * 365;
-                        var birthDay = Date.UTC(2019, 2, 14, 14, 30, 10);
+                        var birthDay = Date.UTC(<?php $this->options->jstime();?>);
                         setInterval(function () {
                             var today = new Date();
                             var todayYear = today.getFullYear();
@@ -239,7 +239,7 @@
     <?php endif;?>
 </script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<?php if($this->options->analysics != null):?>
+<?php if($this->options->analysis != null):?>
 <script async src="https://www.googletagmanager.com/gtag/js?id=<?php $this->options->analysis() ?>"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
