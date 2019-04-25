@@ -116,7 +116,49 @@
                 document.getElementById('comments').style.display = 'block';
             }
         }
+        // go-top
+        let goTop = document.getElementById('go-top');
+        // 判断是否点击
+        let flag = 0;
+        // alert(totalHeight);
+        // 获取正在显示的长度
+        let showHeight = window.innerHeight;
+        let container = document.querySelector('html');
+        // 判断滚动条高度需要添加 overflow: auto 属性
+        window.onscroll = function () {
+            if (container.scrollTop > showHeight && flag === 0) {
+                goTop.style.transform = 'scale(1)';
+            } else if (container.scrollTop <= showHeight) {
+                goTop.style.transform = '';
+            }
 
+            // 点击时, 回到 0,0点
+            goTop.onclick = function () {
+                goTop.style.transform = '';
+                flag = 1;
+                let curTop = container.scrollTop;
+                // 平滑移动
+                let timer = setInterval(function () {
+                    // 如果到达 0,0 取消定时器
+                    if (container.scrollTop === 0) {
+                        clearInterval(timer);
+
+                        // 别忘了设回 0
+                        flag = 0;
+                    }
+                    container.scrollTo(0, curTop);
+                    // 速度设定
+                    curTop -= 50;
+
+                }, 10);
+            };
+        };
+
+
+        // 窗口改变时
+        window.onresize = function () {
+            showHeight = window.innerHeight;
+        }
     };
 
     function isMenu() {
@@ -202,16 +244,7 @@
     footerPosition();
     $(window).resize(footerPosition);
 
-    $(function () {
-        var top = $("#go-top");
-        $(window).scroll(function () {
-            ($(window).scrollTop() > 300) ? top.show(300) : top.hide(200);
-            $("#go-top").click(function () {
-                $('body,html').animate({scrollTop: 0});
-                return false();
-            })
-        });
-    });
+
 
     <?php if($this->is('post') || $this->is('page-link') || $this->is('page-archive')):?>
     var article = $('#main > article');
@@ -239,20 +272,20 @@
     <?php endif;?>
 </script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<?php if($this->options->analysis != null):?>
-<script async src="https://www.googletagmanager.com/gtag/js?id=<?php $this->options->analysis() ?>"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
+<?php if ($this->options->analysis != null): ?>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=<?php $this->options->analysis() ?>"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
+        function gtag() {
+            dataLayer.push(arguments);
+        }
 
-    gtag('js', new Date());
+        gtag('js', new Date());
 
-    gtag('config', '<?php $this->options->analysis() ?>');
-</script>
-<?php endif;?>
+        gtag('config', '<?php $this->options->analysis() ?>');
+    </script>
+<?php endif; ?>
 <div id="go-top"></div>
 <?php $this->footer(); ?>
 </body>
