@@ -261,29 +261,19 @@
     }
 
     // 评论区过度
-    // form max-width: 0 div 0
+
     function isComments() {
         if (document.getElementById('btn-comments').innerText == 'show comments') {
             document.getElementById('btn-comments').innerText = 'hide comments';
             document.getElementById('comments').style.maxHeight = 2000 + 'px';
-            //document.getElementById('comment-form').style.maxHeight = 1000 + 'px';
+
         } else {
             document.getElementById('btn-comments').innerText = 'show comments';
             document.getElementById('comments').style.maxHeight = 0;
-            //document.getElementById('comment-form').style.maxHeight = 0;
+
         }
     }
-
-    // function isComments() {
-    //     if (document.getElementById('btn-comments').innerText == 'show comments') {
-    //         document.getElementById('btn-comments').innerText = 'hide comments';
-    //         document.getElementById('comments').style.display = 'block';
-    //     } else {
-    //         document.getElementById('btn-comments').innerText = 'show comments';
-    //         document.getElementById('comments').style.display = 'none';
-    //     }
-    // }
-
+    
     function Search404() {
         $('#menu-1').fadeIn(150);
         $('#menu-2').fadeIn(150);
