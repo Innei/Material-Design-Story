@@ -42,7 +42,7 @@ echo $commentClass;
 </li>
 <?php } ?>
 
-<div id="comments" class="gen">
+<div id="comments" class="gen" style="transition: max-height .5s;max-height: 0;overflow: hidden;">
     <?php $this->comments()->to($comments); ?>
 
     <?php if($this->allow('comment')): ?>
