@@ -113,7 +113,7 @@
             var ii = window.location.hash.indexOf('#respond-post');
             if (i != '-1' || ii != '-1') {
                 document.getElementById('btn-comments').innerText = 'hide comments';
-                document.getElementById('comments').style.display = 'block';
+                document.getElementById('comments').style.maxHeight = 2000 + 'px';
             }
         }
         // go-top
@@ -273,7 +273,7 @@
 
         }
     }
-    
+
     function Search404() {
         $('#menu-1').fadeIn(150);
         $('#menu-2').fadeIn(150);
