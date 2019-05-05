@@ -198,8 +198,7 @@
             }
 
         }
-    }
-    ;
+    };
 
     function isMenu() {
         if (document.getElementById('menu-1').style.display == 'inline') {
