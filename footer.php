@@ -2,17 +2,17 @@
 </div><!-- end #body -->
 
 <footer id="footer" role="contentinfo" style="position: relative;">
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-12">
-				&copy; <?php echo date('Y'); ?> <a
-						href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a>.
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                &copy; <?php echo date('Y'); ?> <a
+                        href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a>.
                 <?php _e('Using <a target="_blank" href="http://www.typecho.org">Typecho</a> & <a target="_blank" href="https://github.com/Innei/Material-Design-Story">Card Design</a>'); ?>
-				.
+                .
                 <?php
                 if ($this->options->runtime == 'JS') : ?>
-					<p>本站已萌萌哒运行了<span id="showDays"></span></p>
-					<script>
+                    <p>本站已萌萌哒运行了<span id="showDays"></span></p>
+                    <script>
                         var seconds = 1000;
                         var minutes = seconds * 60;
                         var hours = minutes * 60;
@@ -36,51 +36,51 @@
                             var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
                             document.getElementById('showDays').innerHTML = "" + diffDays + "天" + diffHours + "小时" + diffMinutes + "分钟" + diffSeconds + "秒";
                         }, 1000);
-					</script>
+                    </script>
                 <?php elseif ($this->options->runtime == 'PHP'):
                     $this->need('time.php');
 
                 endif;
                 ?>
-			</div>
-		</div>
-		<div id="footer-infor">
-			<div class="footer-item">
-				<h3>站点信息：</h3>
-				<ul>
+            </div>
+        </div>
+        <div id="footer-infor">
+            <div class="footer-item">
+                <h3>站点信息：</h3>
+                <ul>
                     <?php Typecho_Widget::widget('Widget_Stat')->to($stat); ?>
-					<li>文章：<?php $stat->publishedPostsNum() ?> 篇</li>
-					<li>分类：<?php $stat->categoriesNum() ?> 个</li>
-					<li>评论：<?php $stat->publishedCommentsNum() ?> 条</li>
-					<li>页面：<?php $stat->publishedPagesNum() ?> 个</li>
-				</ul>
-			</div>
-			<div class="footer-item">
-				<h3>最新文章：</h3>
-				<ul>
+                    <li>文章：<?php $stat->publishedPostsNum() ?> 篇</li>
+                    <li>分类：<?php $stat->categoriesNum() ?> 个</li>
+                    <li>评论：<?php $stat->publishedCommentsNum() ?> 条</li>
+                    <li>页面：<?php $stat->publishedPagesNum() ?> 个</li>
+                </ul>
+            </div>
+            <div class="footer-item">
+                <h3>最新文章：</h3>
+                <ul>
                     <?php $this->widget('Widget_Contents_Post_Recent', 'pageSize=4')->parse('<li><a href="{permalink}" target="_blank">{title}</a></li>'); ?>
-				</ul>
-			</div>
-			<div class="footer-item">
-				<h3>时光机：</h3>
-				<ul>
+                </ul>
+            </div>
+            <div class="footer-item">
+                <h3>时光机：</h3>
+                <ul>
                     <?php $this->widget('Widget_Contents_Post_Date', 'type=month&format=Y 年 m 月&limit=4')->parse('<li><a href="{permalink}" rel="nofollow" target="_blank">{date}</a></li>'); ?>
-				</ul>
-			</div>
-			<div class="footer-item">
-				<h3>最近评论：</h3>
-				<div>
-					<ul>
+                </ul>
+            </div>
+            <div class="footer-item">
+                <h3>最近评论：</h3>
+                <div>
+                    <ul>
                         <?php $this->widget('Widget_Comments_Recent', 'pageSize=4')->to($comments); ?>
                         <?php while ($comments->next()): ?>
-							<li><a href="<?php $comments->permalink(); ?>" rel="nofollow"
-							       target="_blank"><?php $comments->author(false); ?>
-									：<?php $comments->excerpt(10, '...'); ?></a></li>
+                            <li><a href="<?php $comments->permalink(); ?>" rel="nofollow"
+                                   target="_blank"><?php $comments->author(false); ?>
+                                    ：<?php $comments->excerpt(10, '...'); ?></a></li>
                         <?php endwhile; ?></ul>
-				</div>
-			</div>
-		</div>
-	</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </footer>
 <script src="https://lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="<?php $this->options->themeUrl('assert/js/prism.js'); ?>"></script>
@@ -165,9 +165,22 @@
         {
             if (document.querySelector('#torTree > div > div')) {
                 const torArr = document.querySelectorAll('#torTree > div > div > a');
+
+                function getElementTop(element) {
+                    var actualTop = element.offsetTop;
+                    var current = element.offsetParent;
+
+                    while (current !== null) {
+                        actualTop += current.offsetTop;
+                        current = current.offsetParent;
+                    }
+
+                    return actualTop;
+                }
+
                 for (var i = 0; i < torArr.length; i++) {
                     torArr[i].onclick = function (e) {
-                        var Top = document.getElementById(`${this.getAttribute('href').replace(/^#/, '')}`).offsetTop;
+                        var Top = getElementTop(document.getElementById(`${this.getAttribute('href').replace(/^#/, '')}`)) - 10;
                         const timer = setInterval(
                             () => {
                                 let curTop = document.documentElement.scrollTop;
@@ -312,8 +325,8 @@
 </script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <?php if ($this->options->analysis != null): ?>
-	<script async src="https://www.googletagmanager.com/gtag/js?id=<?php $this->options->analysis() ?>"></script>
-	<script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=<?php $this->options->analysis() ?>"></script>
+    <script>
         window.dataLayer = window.dataLayer || [];
 
         function gtag() {
@@ -323,7 +336,7 @@
         gtag('js', new Date());
 
         gtag('config', '<?php $this->options->analysis() ?>');
-	</script>
+    </script>
 <?php endif; ?>
 <div id="go-top"></div>
 <?php $this->footer(); ?>
