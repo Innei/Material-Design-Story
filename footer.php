@@ -265,7 +265,7 @@
     function isComments() {
         if (document.getElementById('btn-comments').innerText == 'show comments') {
             document.getElementById('btn-comments').innerText = 'hide comments';
-            document.getElementById('comments').style.maxHeight = 1000 + 'px';
+            document.getElementById('comments').style.maxHeight = 2000 + 'px';
             //document.getElementById('comment-form').style.maxHeight = 1000 + 'px';
         } else {
             document.getElementById('btn-comments').innerText = 'show comments';
