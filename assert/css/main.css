@@ -224,7 +224,7 @@ blockquote {
 blockquote:before {
     content: '\201C';
     position: absolute;
-    top: 0em;
+    top: 0;
     left: 50%;
     transform: translate(-50%, -50%);
     background-image: none;
@@ -1051,11 +1051,11 @@ em {
 
 
     .header-logo span.b {
-        margin-right: 0px;
+        margin-right: 0;
     }
 
     .header-logo span.w {
-        margin-right: 0px;
+        margin-right: 0;
     }
 
 }
@@ -1078,12 +1078,10 @@ em {
 
 #go-top:hover {
     box-shadow: 1px 1px 12px rgba(10, 10, 10, 0.2);
-    transition: all .5s;
 }
 
 #go-top:active {
     transform: scale(0);
-    transition: all .2s;
 }
 
 

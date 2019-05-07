@@ -357,7 +357,8 @@
             "title",
             "meta[name=description]", // 如果是全部 meta 替换的话，只需要写 meta
             "#pjax",
-            "#s"
+            "#s",
+            ".hitokoto"
         ],
         cacheBust: false
     })
