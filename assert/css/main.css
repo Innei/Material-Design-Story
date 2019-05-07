@@ -1048,9 +1048,7 @@ em {
         display: none;
     }
 
-    #go-top {
-        display: none;
-    }
+
 
     .header-logo span.b {
         margin-right: 0px;
@@ -1088,20 +1086,13 @@ em {
     transition: all .2s;
 }
 
-#go-top::before {
-    width: 1.5em;
-    position: fixed;
-    bottom: 20%;
-    left: 25%;
-    color: white;
-    display: block;
-    content: "\f062";
-    text-align: center;
-    font-family: fontawesome;
-}
 
 #footer-infor {
     margin: 0 auto;
+    max-width: 1200px;
+    max-height: 200px;
+    overflow: hidden;
+    position: relative;
 }
 
 #footer-infor ul {
@@ -1109,15 +1100,17 @@ em {
 }
 
 #footer-infor .footer-item {
-    float: left;
-    width: 25%;
+    padding-top: 20px;
+    padding-left: 10px;
+    display: inline-block;
     text-align: left;
-}
-
-@media screen and (max-width: 950px) {
-    #footer-infor .footer-item {
-        width: 50%;
-    }
+    vertical-align: top;
+    min-width: 230px;
+    max-width: 300px;
+    max-height: 200px;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
 }
 
 @media screen and (max-width: 550px) {
@@ -1130,6 +1123,13 @@ em {
     }
 }
 
+.icon {
+    position: absolute;
+    right: 2em;
+    line-height: inherit;
+}
+
+/*自定义标签*/
 quote {
     border-top: rgba(255, 140, 169, 0.88);
     background-color: rgba(65, 65, 65, 0.02);

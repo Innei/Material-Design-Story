@@ -44,9 +44,10 @@
                 ?>
             </div>
         </div>
-        <div id="footer-infor">
+        <section id="footer-infor">
             <div class="footer-item">
-                <h3>站点信息：</h3>
+
+                <h3>站点信息：<i class="fas fa-globe-asia icon"></i></h3>
                 <ul>
                     <?php Typecho_Widget::widget('Widget_Stat')->to($stat); ?>
                     <li>文章：<?php $stat->publishedPostsNum() ?> 篇</li>
@@ -56,19 +57,19 @@
                 </ul>
             </div>
             <div class="footer-item">
-                <h3>最新文章：</h3>
+                <h3>最新文章：<i class="fas fa-book-open icon"></i></h3>
                 <ul>
                     <?php $this->widget('Widget_Contents_Post_Recent', 'pageSize=4')->parse('<li><a href="{permalink}" target="_blank">{title}</a></li>'); ?>
                 </ul>
             </div>
             <div class="footer-item">
-                <h3>时光机：</h3>
+                <h3>时光机：<i class="fas fa-history icon"></i></h3>
                 <ul>
                     <?php $this->widget('Widget_Contents_Post_Date', 'type=month&format=Y 年 m 月&limit=4')->parse('<li><a href="{permalink}" rel="nofollow" target="_blank">{date}</a></li>'); ?>
                 </ul>
             </div>
             <div class="footer-item">
-                <h3>最近评论：</h3>
+                <h3>最近评论：<i class="fas fa-history icon"></i></h3>
                 <div>
                     <ul>
                         <?php $this->widget('Widget_Comments_Recent', 'pageSize=4')->to($comments); ?>
@@ -79,7 +80,7 @@
                         <?php endwhile; ?></ul>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
 </footer>
 <script src="https://lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script>
@@ -345,7 +346,17 @@
         gtag('config', '<?php $this->options->analysis() ?>');
     </script>
 <?php endif; ?>
-<div id="go-top"></div>
+<div id="go-top">
+    <i class="fas fa-arrow-up" style="
+    position: absolute;
+    bottom: 28%;
+    left: 30%;
+    color: white;
+    display: block;
+    text-align: center;
+    font-size: 20px;
+"></i>
+</div>
 <?php $this->footer(); ?>
 </body>
 </html>
