@@ -14,7 +14,7 @@
 	</div>
 </div>
 
-<div class="container-fluid">
+<div id="pjax" class="container-fluid">
     <div class="row">
 		<div id="main" role="main">
 			<ul class="post-list clearfix">

@@ -87,7 +87,7 @@ if ($this->options->style_BG) {
                         $s = $this->options->NAME;
                         $NAME = str_split_unicode($s);
                         ?>
-                        <a href="<?php $this->options->adminUrl('login.php'); ?>">
+                        <a href="<?php $this->options->adminUrl('login.php'); ?>" target="_blank">
                             <span class="b"><?php echo $NAME['0']; ?></span></a>
                         <span class="b"><?php echo $NAME['1']; ?></span>
                         <a href="<?php $this->options->siteUrl(); ?>">

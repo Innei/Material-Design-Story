@@ -8,7 +8,7 @@
 $this->need('header.php');
 require_once 'functions.php';
 ?>
-    <div class="container-fluid">
+    <div id="pjax" class="container-fluid">
         <div class="row">
             <div id="main" class="col-12 clearfix" role="main">
                 <article class="posti" itemscope itemtype="http://schema.org/BlogPosting">

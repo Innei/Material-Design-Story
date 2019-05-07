@@ -69,7 +69,7 @@
                 </ul>
             </div>
             <div class="footer-item">
-                <h3>最近评论：<i class="fas fa-history icon"></i></h3>
+                <h3>最近评论：<i class="far fa-comment icon"></i></h3>
                 <div>
                     <ul>
                         <?php $this->widget('Widget_Comments_Recent', 'pageSize=4')->to($comments); ?>
@@ -84,9 +84,10 @@
     </div>
 </footer>
 <script src="https://lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pjax/pjax.js"></script>
 <script src="<?php $this->options->themeUrl('assert/js/prism.js'); ?>"></script>
 <script src="<?php $this->options->themeUrl('assert/js/zoom-vanilla.min.js'); ?>"></script>
-
+<div id="s">
 <script>
     window.onload = function () {
         <?php if ($this->is('post')): ?>
@@ -216,6 +217,7 @@
 
     };
 
+
     function isMenu() {
         if (document.getElementById('menu-1').style.display == 'inline') {
             $('#search-box').fadeOut(200);
@@ -331,6 +333,7 @@
     <?php endif;?>
 
 </script>
+</div>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <?php if ($this->options->analysis != null): ?>
     <script async src="https://www.googletagmanager.com/gtag/js?id=<?php $this->options->analysis() ?>"></script>
@@ -344,8 +347,22 @@
         gtag('js', new Date());
 
         gtag('config', '<?php $this->options->analysis() ?>');
+
     </script>
 <?php endif; ?>
+
+<script>
+    var pjax = new Pjax({
+        selectors: [
+            "title",
+            "meta[name=description]", // 如果是全部 meta 替换的话，只需要写 meta
+            "#pjax",
+            "#s"
+        ],
+        cacheBust: false
+    })
+
+</script>
 <div id="go-top">
     <i class="fas fa-arrow-up" style="
     position: absolute;

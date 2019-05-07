@@ -1,7 +1,7 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <?php $this->need('header.php'); ?>
 
-<div class="container-fluid">
+<div id="pjax" class="container-fluid">
 	<div class="row">
 		<div id="main" class="col-12 clearfix" role="main">
 			<article class="posti hidden" itemscope itemtype="http://schema.org/BlogPosting" >
