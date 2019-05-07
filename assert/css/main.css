@@ -415,6 +415,7 @@ blockquote ul, blockquote ol {
     border-style: solid;
     padding-left: 5px;
 }
+
 .posti h3:before {
     content: "#";
     margin-right: 5px;
@@ -442,6 +443,7 @@ ul li:before {
     position: absolute;
     margin-left: -15px;
 }
+
 #main > ul > li:before {
     content: '';
     display: none;
@@ -450,6 +452,7 @@ ul li:before {
 li {
     list-style: none;
 }
+
 .posti .a_tag {
     display: flow-root;
 }
@@ -636,6 +639,7 @@ li {
 .hide {
     display: none;
 }
+
 .hidden {
     opacity: 0;
 }
@@ -786,6 +790,7 @@ li {
     margin-left: auto !important;
     text-align: right;
 }
+
 #torTree {
     line-height: 1.5em;
     margin-left: 6px;
@@ -819,6 +824,7 @@ li {
 #torTree .tori {
     font-weight: 600;
 }
+
 #torTree a {
     color: #333;
 }
@@ -847,6 +853,7 @@ li {
         z-index: -10;
     }
 }
+
 .cPlayer img {
     max-width: 100%;
 }
@@ -938,54 +945,52 @@ li {
     list-style: none;
 
 }
+
 .post-copyright li:before {
     display: none;
 }
+
 .colorgradient-card .post-dec {
     width: 230px;
     height: 200px;
     position: relative;
     overflow: hidden;
     opacity: 0;
-    -webkit-transition: all 1s;
-    -moz-transition: all 1s;
-    -ms-transition: all 1s;
-    -o-transition: all 1s;
+    -webkit-transition: opacity .5s linear;
+    -moz-transition: opacity .5s linear;
+    -ms-transition: opacity .5s linear;
+    -o-transition: opacity .5s linear;
 }
 
 .colorgradient-card .post-dec p {
     width: 100px;
     height: 200px;
     position: absolute;
-    top: 0px;
+    top: 0;
     filter: Alpha(opacity=80);
     text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
     -moz-opacity: 0.8;
     opacity: 0.8;
     padding: 20px;
     color: gray;
+
 }
 
 .colorgradient-card .post-dec:hover {
     opacity: 1;
-    transform: scale(1.0);
-    -webkit-transition: all 1s;
-    -moz-transition: all 1s;
-    -ms-transition: all 1s;
-    -o-transition: all 1s;
 }
 
 .modified-date {
-    height: 50px;
-    padding-left: 5px;
-    border-left: 3px solid #ff9ece; /*#414141*/
+    padding-left: 8px;
+    border-left: 3px solid #ff9ece;
     background-color: rgba(65, 65, 65, 0.05);
+    margin-bottom: 3px;
+    height: auto;
 }
 
 .modified-date p {
-    /*vertical-align: middle;*/
-    line-height: 50px;
     font-weight: 500;
+    padding: 5px;
 
 }
 
@@ -1046,6 +1051,7 @@ em {
     #go-top {
         display: none;
     }
+
     .header-logo span.b {
         margin-right: 0px;
     }
@@ -1055,6 +1061,7 @@ em {
     }
 
 }
+
 #go-top {
     transform: scale(0);
     background-color: #ff5252cc;
