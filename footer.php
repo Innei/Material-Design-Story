@@ -85,252 +85,252 @@
 </footer>
 <script src="https://lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/pjax/pjax.js"></script>
-<script src="<?php $this->options->themeUrl('assert/js/prism.js'); ?>"></script>
-<script src="<?php $this->options->themeUrl('assert/js/zoom-vanilla.min.js'); ?>"></script>
-<div id="s">
-    <script>
-        window.onload = function () {
-            <?php if ($this->is('post')): ?>
-            <?php $postConfig = parse_title($this->content);?>
-            <?php if ($postConfig): ?>
-            isMenu2('auto');
-            <?php endif; ?>
-            <?php endif; ?>
-            <?php if($this->options->isAutoNav == 'on'): ?>
-            var b = document.getElementsByClassName('b');
-            var w = document.getElementsByClassName('w');
-            var menupgMargin = (b.length + w.length) * 28;
-            var srhboxMargin = (b.length + w.length + 3) * 28;
-            var menusrhWidth = (b.length + w.length - 1) * 28;
-            document.getElementById('menu-page').style['margin-left'] = menupgMargin + 'px';
-            document.getElementById('search-box').style['margin-left'] = srhboxMargin + 'px';
-            document.getElementById('menu-search').style['width'] = menusrhWidth + 'px';
-            if (menusrhWidth < 140) {
-                document.getElementById('menu-search').setAttribute('placeholder', 'Search~');
+<script src="<?php $this->options->themeUrl('assert/js/prism.js'); ?>" pjax></script>
+<script src="<?php $this->options->themeUrl('assert/js/zoom-vanilla.min.js'); ?>" pjax></script>
+
+<script pjax>
+    window.onload = function () {
+        <?php if ($this->is('post')): ?>
+        <?php $postConfig = parse_title($this->content);?>
+        <?php if ($postConfig): ?>
+        isMenu2('auto');
+        <?php endif; ?>
+        <?php endif; ?>
+        <?php if($this->options->isAutoNav == 'on'): ?>
+        var b = document.getElementsByClassName('b');
+        var w = document.getElementsByClassName('w');
+        var menupgMargin = (b.length + w.length) * 28;
+        var srhboxMargin = (b.length + w.length + 3) * 28;
+        var menusrhWidth = (b.length + w.length - 1) * 28;
+        document.getElementById('menu-page').style['margin-left'] = menupgMargin + 'px';
+        document.getElementById('search-box').style['margin-left'] = srhboxMargin + 'px';
+        document.getElementById('menu-search').style['width'] = menusrhWidth + 'px';
+        if (menusrhWidth < 140) {
+            document.getElementById('menu-search').setAttribute('placeholder', 'Search~');
+        }
+        <?php endif; ?>
+
+        if (window.location.hash != '') {
+            var i = window.location.hash.indexOf('#comment');
+            var ii = window.location.hash.indexOf('#respond-post');
+            if (i != '-1' || ii != '-1') {
+                document.getElementById('btn-comments').innerText = 'hide comments';
+                document.getElementById('comments').style.maxHeight = 2000 + 'px';
             }
-            <?php endif; ?>
+        }
+        // go-top
 
-            if (window.location.hash != '') {
-                var i = window.location.hash.indexOf('#comment');
-                var ii = window.location.hash.indexOf('#respond-post');
-                if (i != '-1' || ii != '-1') {
-                    document.getElementById('btn-comments').innerText = 'hide comments';
-                    document.getElementById('comments').style.maxHeight = 2000 + 'px';
-                }
-            }
-            // go-top
-
-            let goTop = document.getElementById('go-top');
-            // 判断是否点击
-            let flag = 0;
-            // alert(totalHeight);
-            // 获取正在显示的长度
-            let showHeight = window.innerHeight;
-            let container = document.querySelector('html');
-            // 判断滚动条高度需要添加 overflow: auto 属性
-            window.onscroll = function () {
-                if (container.scrollTop > showHeight && flag === 0) {
-                    goTop.style.transform = 'scale(1)';
-                } else if (container.scrollTop <= showHeight) {
-                    goTop.style.transform = '';
-                }
-
-                // 点击时, 回到 0,0点
-                goTop.onclick = function () {
-                    goTop.style.transform = '';
-                    flag = 1;
-                    let curTop = container.scrollTop;
-                    // 平滑移动
-                    let timer = setInterval(function () {
-                        // 如果到达 0,0 取消定时器
-                        if (container.scrollTop === 0) {
-                            clearInterval(timer);
-
-                            // 别忘了设回 0
-                            flag = 0;
-                        }
-                        container.scrollTo(0, curTop);
-                        // 速度设定
-                        curTop -= 50;
-
-                    }, 10);
-                };
-            };
-
-
-            // 窗口改变时
-            window.onresize = function () {
-                showHeight = window.innerHeight;
+        let goTop = document.getElementById('go-top');
+        // 判断是否点击
+        let flag = 0;
+        // alert(totalHeight);
+        // 获取正在显示的长度
+        let showHeight = window.innerHeight;
+        let container = document.querySelector('html');
+        // 判断滚动条高度需要添加 overflow: auto 属性
+        window.onscroll = function () {
+            if (container.scrollTop > showHeight && flag === 0) {
+                goTop.style.transform = 'scale(1)';
+            } else if (container.scrollTop <= showHeight) {
+                goTop.style.transform = '';
             }
 
+            // 点击时, 回到 0,0点
+            goTop.onclick = function () {
+                goTop.style.transform = '';
+                flag = 1;
+                let curTop = container.scrollTop;
+                // 平滑移动
+                let timer = setInterval(function () {
+                    // 如果到达 0,0 取消定时器
+                    if (container.scrollTop === 0) {
+                        clearInterval(timer);
 
-            if (document.querySelector('#torTree > div > div')) {
-                const torArr = document.querySelectorAll('#torTree > div > div > a');
-
-                function getElementTop(element) {
-                    var actualTop = element.offsetTop;
-                    var current = element.offsetParent;
-
-                    while (current !== null) {
-                        actualTop += current.offsetTop;
-                        current = current.offsetParent;
+                        // 别忘了设回 0
+                        flag = 0;
                     }
+                    container.scrollTo(0, curTop);
+                    // 速度设定
+                    curTop -= 50;
 
-                    return actualTop;
-                }
-
-                for (var i = 0; i < torArr.length; i++) {
-                    torArr[i].onclick = function (e) {
-                        var Top = getElementTop(document.getElementById(`${this.getAttribute('href').replace(/^#/, '')}`)) - 10;
-                        const timer = setInterval(
-                            () => {
-                                let curTop = document.documentElement.scrollTop;
-
-                                if (Math.abs(curTop - Top) < 50) {
-                                    window.scrollTo(0, Top);
-                                    clearInterval(timer);
-                                    return;
-                                }
-
-                                if (curTop < Top) {
-                                    curTop += 50;
-                                    window.scrollTo(0, curTop);
-                                } else if (curTop > Top) {
-                                    curTop -= 50;
-                                    window.scrollTo(0, curTop);
-                                } else {
-                                    clearInterval(timer);
-                                }
-                            }
-                            , 10);
-
-                        e.preventDefault();
-                    };
-                }
-
-
-            }
-
-
+                }, 10);
+            };
         };
 
 
-        function isMenu() {
-            if (document.getElementById('menu-1').style.display == 'inline') {
-                $('#search-box').fadeOut(200);
-                $('#menu-page').fadeOut(200);
-                $('#menu-1').fadeOut(500);
-                $('#menu-2').fadeOut(400);
-                $('#menu-3').fadeOut(300);
-            } else {
-                $('#menu-1').fadeIn(150);
-                $('#menu-2').fadeIn(150);
-                $('#menu-3').fadeIn(150);
-            }
+        // 窗口改变时
+        window.onresize = function () {
+            showHeight = window.innerHeight;
         }
 
-        function isMenu1() {
-            if (document.getElementById('menu-page').style.display == 'block') {
-                $('#menu-page').fadeOut(300);
-            } else {
-                $('#menu-page').fadeIn(300);
-            }
-        }
 
-        function isMenu2(c = 'none') {
-            if (document.getElementById('torTree')) {
-                if ($("#torTree").attr('style') == 'display: none;') {
-                    $("#torTree").fadeIn(300);
-                    $("#torTree").css('display', 'inline-block');
-                } else {
-                    $("#torTree").fadeOut(300);
+        if (document.querySelector('#torTree > div > div')) {
+            const torArr = document.querySelectorAll('#torTree > div > div > a');
+
+            function getElementTop(element) {
+                var actualTop = element.offsetTop;
+                var current = element.offsetParent;
+
+                while (current !== null) {
+                    actualTop += current.offsetTop;
+                    current = current.offsetParent;
                 }
-            } else {
-                if (c != 'auto') {
-                    alert('人家是导航树哦！只有在特定的文章页面才会出现哦...');
-                }
+
+                return actualTop;
             }
+
+            for (var i = 0; i < torArr.length; i++) {
+                torArr[i].onclick = function (e) {
+                    var Top = getElementTop(document.getElementById(`${this.getAttribute('href').replace(/^#/, '')}`)) - 10;
+                    const timer = setInterval(
+                        () => {
+                            let curTop = document.documentElement.scrollTop;
+
+                            if (Math.abs(curTop - Top) < 50) {
+                                window.scrollTo(0, Top);
+                                clearInterval(timer);
+                                return;
+                            }
+
+                            if (curTop < Top) {
+                                curTop += 50;
+                                window.scrollTo(0, curTop);
+                            } else if (curTop > Top) {
+                                curTop -= 50;
+                                window.scrollTo(0, curTop);
+                            } else {
+                                clearInterval(timer);
+                            }
+                        }
+                        , 10);
+
+                    e.preventDefault();
+                };
+            }
+
+
         }
 
-        function isMenu3() {
-            if (document.getElementById('search-box').style.display == 'block') {
-                $('#search-box').fadeOut(300);
-            } else {
-                $('#search-box').fadeIn(300);
-            }
-        }
 
-        // 评论区过度
+    };
 
-        function isComments() {
-            if (document.getElementById('btn-comments').innerText == 'show comments') {
-                document.getElementById('btn-comments').innerText = 'hide comments';
-                document.getElementById('comments').style.maxHeight = 1500 + 'px';
 
-            } else {
-                document.getElementById('btn-comments').innerText = 'show comments';
-                document.getElementById('comments').style.maxHeight = 0;
-
-            }
-        }
-
-        function Search404() {
+    function isMenu() {
+        if (document.getElementById('menu-1').style.display == 'inline') {
+            $('#search-box').fadeOut(200);
+            $('#menu-page').fadeOut(200);
+            $('#menu-1').fadeOut(500);
+            $('#menu-2').fadeOut(400);
+            $('#menu-3').fadeOut(300);
+        } else {
             $('#menu-1').fadeIn(150);
             $('#menu-2').fadeIn(150);
             $('#menu-3').fadeIn(150);
+        }
+    }
+
+    function isMenu1() {
+        if (document.getElementById('menu-page').style.display == 'block') {
+            $('#menu-page').fadeOut(300);
+        } else {
+            $('#menu-page').fadeIn(300);
+        }
+    }
+
+    function isMenu2(c = 'none') {
+        if (document.getElementById('torTree')) {
+            if ($("#torTree").attr('style') == 'display: none;') {
+                $("#torTree").fadeIn(300);
+                $("#torTree").css('display', 'inline-block');
+            } else {
+                $("#torTree").fadeOut(300);
+            }
+        } else {
+            if (c != 'auto') {
+                alert('人家是导航树哦！只有在特定的文章页面才会出现哦...');
+            }
+        }
+    }
+
+    function isMenu3() {
+        if (document.getElementById('search-box').style.display == 'block') {
+            $('#search-box').fadeOut(300);
+        } else {
             $('#search-box').fadeIn(300);
         }
+    }
 
-        function goBack() {
-            window.history.back();
+    // 评论区过度
+
+    function isComments() {
+        if (document.getElementById('btn-comments').innerText == 'show comments') {
+            document.getElementById('btn-comments').innerText = 'hide comments';
+            document.getElementById('comments').style.maxHeight = 1500 + 'px';
+
+        } else {
+            document.getElementById('btn-comments').innerText = 'show comments';
+            document.getElementById('comments').style.maxHeight = 0;
+
         }
+    }
 
-        function footerPosition() {
-            $("footer").removeClass("fixed-bottom");
-            var contentHeight = document.body.scrollHeight,
-                winHeight = window.innerHeight;
-            if (document.getElementsByClassName("post-content")[0]) {
-                var winImgNum = document.getElementsByClassName("post-content")[0].getElementsByTagName("img").length;
-            } else {
-                var winImgNum = 0;
-            }
-            if (!(contentHeight > winHeight) && winImgNum <= 1) {
-                $("footer").addClass("fixed-bottom");
-            }
+    function Search404() {
+        $('#menu-1').fadeIn(150);
+        $('#menu-2').fadeIn(150);
+        $('#menu-3').fadeIn(150);
+        $('#search-box').fadeIn(300);
+    }
+
+    function goBack() {
+        window.history.back();
+    }
+
+    function footerPosition() {
+        $("footer").removeClass("fixed-bottom");
+        var contentHeight = document.body.scrollHeight,
+            winHeight = window.innerHeight;
+        if (document.getElementsByClassName("post-content")[0]) {
+            var winImgNum = document.getElementsByClassName("post-content")[0].getElementsByTagName("img").length;
+        } else {
+            var winImgNum = 0;
         }
+        if (!(contentHeight > winHeight) && winImgNum <= 1) {
+            $("footer").addClass("fixed-bottom");
+        }
+    }
 
-        footerPosition();
-        $(window).resize(footerPosition);
+    footerPosition();
+    $(window).resize(footerPosition);
 
 
 
-        <?php if($this->is('post') || $this->is('page-link') || $this->is('page-archive')):?>
-        var article = $('#main > article');
-        $(document).ready(function () {
-            article.removeClass('hidden');
-            article.toggleClass('fadeInUp animated');
-            article.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function (e) {
-                $(e.target).removeClass('fadeInUp animated');
-
-            });
+    <?php if($this->is('post') || $this->is('page-link') || $this->is('page-archive')):?>
+    var article = $('#main > article');
+    $(document).ready(function () {
+        article.removeClass('hidden');
+        article.toggleClass('fadeInUp animated');
+        article.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function (e) {
+            $(e.target).removeClass('fadeInUp animated');
 
         });
-        <?php endif;?>
-        <?php if($this->is('index')):?>
-        $(document).ready(function () {
-            var card = $('#main > ul > li > a.colorgradient-card');
-            card.removeClass('hidden');
-            card.toggleClass('zoomIn animated');
-            card.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function (e) {
-                $(e.target).removeClass('zoomIn animated');
 
-            });
+    });
+    <?php endif;?>
+    <?php if($this->is('index')):?>
+    $(document).ready(function () {
+        var card = $('#main > ul > li > a.colorgradient-card');
+        card.removeClass('hidden');
+        card.toggleClass('zoomIn animated');
+        card.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function (e) {
+            $(e.target).removeClass('zoomIn animated');
 
         });
-        <?php endif;?>
 
-    </script>
-</div>
+    });
+    <?php endif;?>
+
+</script>
+
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <?php if ($this->options->analysis != null): ?>
     <script async src="https://www.googletagmanager.com/gtag/js?id=<?php $this->options->analysis() ?>"></script>
@@ -352,17 +352,17 @@
     var pjax = new Pjax({
         selectors: [
             "title",
-            "meta[name=description]", // 如果是全部 meta 替换的话，只需要写 meta
+            "meta[name=description]",
             "#pjax",
-            "#s",
+            "[pjax]",
             ".hitokoto"
         ],
         cacheBust: false,
 
     })
     document.addEventListener('pjax:complete', function () {
-        window.onload();
-    };
+            window.onload();
+        }
     )
 </script>
 <div id="go-top">

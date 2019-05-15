@@ -18,21 +18,19 @@
     url('//lib.baomitu.com/fonts/pt-sans/pt-sans-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('//lib.baomitu.com/fonts/pt-sans/pt-sans-regular.woff2') format('woff2'), /* Super Modern Browsers */ url('//lib.baomitu.com/fonts/pt-sans/pt-sans-regular.woff') format('woff'), /* Modern Browsers */ url('//lib.baomitu.com/fonts/pt-sans/pt-sans-regular.ttf') format('truetype'), /* Safari, Android, iOS */ url('//lib.baomitu.com/fonts/pt-sans/pt-sans-regular.svg#PTSans') format('svg'); /* Legacy iOS */
 }
 
-html::-webkit-scrollbar-track-piece {
-}
 
-html::-webkit-scrollbar {
+::-webkit-scrollbar {
     width: 8px;
     height: 8px;
 }
 
-html::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
     height: 40px;
     background-color: #eee;
     border-radius: 16px;
 }
 
-html::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
     background-color: #ddd;
 }
 
@@ -141,7 +139,7 @@ em, i {
 p {
     font-size: 1em;
     color: #333;
-    margin: 0 0 2em 0;
+    margin: 0 0 1.5em 0;
 }
 
 hr {
@@ -199,10 +197,13 @@ code, p code {
 }
 
 code, pre {
-    font-family: Monaco, Consolas, Menlo, "Courier New", monospace;
+    font-family: consolas, courier new, monospace;
     color: #444;
 }
 
+pre {
+    margin-bottom: 2em;
+}
 img {
     max-width: 100%;
     height: auto;
@@ -411,9 +412,9 @@ blockquote ul, blockquote ol {
 
 .posti h2 {
     border-left: #f29dce;
-    border-width: 0 0 0 3px;
+    border-width: 0 0 0 4px;
     border-style: solid;
-    padding-left: 5px;
+    padding-left: 0.5em;
 }
 
 .posti h3:before {
@@ -834,6 +835,14 @@ li {
     background-color: #fff;
 }
 
+#torTree .tor {
+    font-weight: 800;
+    /*margin-left: .4em;*/
+}
+
+#torTree .tor::before {
+    content: '| ';
+}
 #torTree .tori:before {
     content: '# ';
 }
