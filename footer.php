@@ -89,7 +89,9 @@
 <script src="<?php $this->options->themeUrl('assert/js/zoom-vanilla.min.js'); ?>" pjax></script>
 
 <script pjax>
-    window.onload = function () {
+
+
+    function loadAtfer() {
         <?php if ($this->is('post')): ?>
         <?php $postConfig = parse_title($this->content);?>
         <?php if ($postConfig): ?>
@@ -121,40 +123,41 @@
         // go-top
 
         let goTop = document.getElementById('go-top');
-        // 判断是否点击
-        let flag = 0;
+        // // 判断是否点击
+        // let flag = 0;
         // alert(totalHeight);
         // 获取正在显示的长度
         let showHeight = window.innerHeight;
         let container = document.querySelector('html');
         // 判断滚动条高度需要添加 overflow: auto 属性
         window.onscroll = function () {
-            if (container.scrollTop > showHeight && flag === 0) {
+            if (container.scrollTop > showHeight) {
                 goTop.style.transform = 'scale(1)';
             } else if (container.scrollTop <= showHeight) {
-                goTop.style.transform = '';
+                goTop.removeAttribute('style');
             }
+            /*
+                        // 点击时, 回到 0,0点
+                        goTop.onclick = function () {
+                            goTop.style.transform = '';
+                            flag = 1;
+                            let curTop = container.scrollTop;
+                            // 平滑移动
+                            let timer = setInterval(function () {
+                                // 如果到达 0,0 取消定时器
+                                if (container.scrollTop === 0) {
+                                    clearInterval(timer);
 
-            // 点击时, 回到 0,0点
-            goTop.onclick = function () {
-                goTop.style.transform = '';
-                flag = 1;
-                let curTop = container.scrollTop;
-                // 平滑移动
-                let timer = setInterval(function () {
-                    // 如果到达 0,0 取消定时器
-                    if (container.scrollTop === 0) {
-                        clearInterval(timer);
+                                    // 别忘了设回 0
+                                    flag = 0;
+                                }
+                                container.scrollTo(0, curTop);
+                                // 速度设定
+                                curTop -= 50;
 
-                        // 别忘了设回 0
-                        flag = 0;
-                    }
-                    container.scrollTo(0, curTop);
-                    // 速度设定
-                    curTop -= 50;
+                            }, 10);
 
-                }, 10);
-            };
+                        };*/
         };
 
 
@@ -163,7 +166,16 @@
             showHeight = window.innerHeight;
         }
 
+        // document.getElementById('go-top').onclick = function (e) {
+        //     document.getElementById('header').scrollIntoView({
+        //         behavior: "smooth"
+        //     })
+        document.getElementById('go-top').onclick = function (e) {
+            scrollSmoothTo(0);
+            e.preventDefault()
+        }
 
+        // 标题锚点平滑
         if (document.querySelector('#torTree > div > div')) {
             const torArr = document.querySelectorAll('#torTree > div > div > a');
 
@@ -182,7 +194,7 @@
             for (var i = 0; i < torArr.length; i++) {
                 torArr[i].onclick = function (e) {
                     var Top = getElementTop(document.getElementById(`${this.getAttribute('href').replace(/^#/, '')}`)) - 10;
-                    const timer = setInterval(
+                    /*const timer = setInterval(
                         () => {
                             let curTop = document.documentElement.scrollTop;
 
@@ -202,14 +214,15 @@
                                 clearInterval(timer);
                             }
                         }
-                        , 10);
+                        , 10);*/
+                    scrollSmoothTo(Top);
 
                     e.preventDefault();
                 };
             }
         }
 
-        // 绑定时间 点击导航后淡出
+        /*// 绑定事件 点击导航后淡出
         var menu = document.querySelectorAll('#menu-page > a');
 
         for (var i = 0; i < menu.length; i++) {
@@ -217,7 +230,43 @@
                 isMenu1();
                 console.log(menu);
             }
+        }*/
+
+        // 委派事件 点击导航后淡出
+
+        var menu = document.querySelector('#menu-page');
+        menu.addEventListener("click", function (e) {
+            var target = e.target;
+
+            if (target.nodeName.toLocaleLowerCase() === 'li') {
+                isMenu1();
+            }
+        })
+    }
+
+
+    var scrollSmoothTo = function (position) {
+        if (!window.requestAnimationFrame) {
+            window.requestAnimationFrame = function (callback, element) {
+                return setTimeout(callback, 17);
+            };
         }
+        // 当前滚动高度
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        // 滚动step方法
+        var step = function () {
+            // 距离目标滚动距离
+            var distance = position - scrollTop;
+            // 目标滚动位置
+            scrollTop = scrollTop + distance / 5;
+            if (Math.abs(distance) < 1) {
+                window.scrollTo(0, position);
+            } else {
+                window.scrollTo(0, scrollTop);
+                requestAnimationFrame(step);
+            }
+        };
+        step();
     };
 
 
@@ -370,10 +419,8 @@
         cacheBust: false,
 
     })
-    document.addEventListener('pjax:complete', function () {
-            window.onload();
-        }
-    )
+    document.addEventListener('pjax:complete', loadAtfer);
+    document.addEventListener("DOMContentLoaded", loadAtfer);
 </script>
 <div id="go-top">
     <i class="fas fa-arrow-up" style="

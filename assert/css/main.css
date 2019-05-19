@@ -104,12 +104,7 @@ body:before {
     width: 100%;
     height: 100%;
     z-index: -1;
-    -webkit-filter: grayscale(40%);
-    -moz-filter: grayscale(40%);
-    -ms-filter: grayscale(40%);
-    -o-filter: grayscale(40%);
     filter: grayscale(40%);
-    filter: gray;
 }
 
 a {
@@ -1204,4 +1199,10 @@ say .author {
     font-size: .85em;
     text-align: right;
     font-style: italic;
+}
+
+@media (max-width: 500px) {
+    .say {
+        columns: 1;
+    }
 }
