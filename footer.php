@@ -304,17 +304,19 @@
 
 
 
-    <?php if($this->is('post') || $this->is('page-link') || $this->is('page-archive')):?>
-    var article = $('#main > article');
-    $(document).ready(function () {
-        article.removeClass('hidden');
-        article.toggleClass('fadeInUp animated');
-        article.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function (e) {
-            $(e.target).removeClass('fadeInUp animated');
+    <?php if($this->is('post') || $this->is('page') ):?>
+    if ($('#main > article')) {
+        $(document).ready(function () {
+            var article = $('#main > article');
+            article.removeClass('hidden');
+            article.toggleClass('fadeInUp animated');
+            article.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function (e) {
+                $(e.target).removeClass('fadeInUp animated');
+
+            });
 
         });
-
-    });
+    }
     <?php endif;?>
     <?php if($this->is('index')):?>
     $(document).ready(function () {

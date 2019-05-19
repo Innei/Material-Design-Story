@@ -1148,3 +1148,60 @@ quote {
     margin: 0 0 2em 0;
     position: relative;
 }
+
+/*语录*/
+.say {
+    columns: 2;
+    margin: 10px auto;
+    word-break: break-all;
+    letter-spacing: .03em;
+}
+
+say {
+    -webkit-column-break-inside: avoid;
+    break-inside: avoid;
+    background: rgba(52, 152, 219, .05);
+    margin: 0 1em 1em;
+    line-height: 1.8;
+    padding: 1em 1em 1em 2em;
+    border-left: 5px #3498db solid;
+    display: block;
+    border-radius: 0 10px 10px 0;
+    box-shadow: 0 3px 15px 0 rgba(87, 87, 87, 0.2);
+    transform: translateZ(0);
+
+}
+
+.say > say:nth-child(2n) {
+    border-left-color: #ffc107;
+    background: rgba(255, 193, 7, .05);
+}
+
+.say > say:nth-child(3n) {
+    border-left-color: #40e0d0;
+    background: rgba(64, 224, 208, .05);
+}
+
+.say > say:nth-child(4n) {
+    border-left-color: #8a2be2;
+    background: rgba(138, 43, 226, .05);
+}
+
+.say > say:nth-child(5n) {
+    border-left-color: #ff4500;
+    background: rgba(255, 69, 0, .05);
+}
+
+#say {
+    max-width: 75em;
+    display: block;
+    margin: 20px auto;
+
+}
+
+say .author {
+    opacity: .6;
+    font-size: .85em;
+    text-align: right;
+    font-style: italic;
+}
