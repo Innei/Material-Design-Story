@@ -1,7 +1,7 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 </div><!-- end #body -->
 
-<footer id="footer" role="contentinfo" style="position: relative;">
+<footer id="footer" role="contentinfo">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
@@ -207,11 +207,17 @@
                     e.preventDefault();
                 };
             }
-
-
         }
 
+        // 绑定时间 点击导航后淡出
+        var menu = document.querySelectorAll('#menu-page > a');
 
+        for (var i = 0; i < menu.length; i++) {
+            menu[i].onclick = function () {
+                isMenu1();
+                console.log(menu);
+            }
+        }
     };
 
 
@@ -230,8 +236,10 @@
     }
 
     function isMenu1() {
+
         if (document.getElementById('menu-page').style.display == 'block') {
             $('#menu-page').fadeOut(300);
+
         } else {
             $('#menu-page').fadeIn(300);
         }
