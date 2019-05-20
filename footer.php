@@ -88,64 +88,12 @@
 <script src="<?php $this->options->themeUrl('assert/js/prism.js'); ?>" pjax></script>
 <script src="<?php $this->options->themeUrl('assert/js/zoom-vanilla.min.js'); ?>" pjax></script>
 
-<script pjax>
-
-    <?php if($this->is('post') || $this->is('page') ):?>
-    if ($('#main > article')) {
-        $(document).ready(function () {
-            var article = $('#main > article');
-            article.removeClass('hidden');
-            article.toggleClass('fadeInUp animated');
-            article.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function (e) {
-                $(e.target).removeClass('fadeInUp animated');
-
-            });
-
-        });
-    }
-    <?php endif;?>
-    <?php if($this->is('index')):?>
-    $(document).ready(function () {
-        var card = $('#main > ul > li > a.colorgradient-card');
-        card.removeClass('hidden');
-        card.toggleClass('zoomIn animated');
-        card.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function (e) {
-            $(e.target).removeClass('zoomIn animated');
-
-        });
-
-    });
-    <?php endif;?>
-
-</script>
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<?php if ($this->options->analysis != null): ?>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=<?php $this->options->analysis() ?>"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
-        gtag('js', new Date());
-
-        gtag('config', '<?php $this->options->analysis() ?>');
-
-    </script>
-<?php endif; ?>
 
 <script>
 
 
     function loadAtfer() {
-        <?php if ($this->is('post')): ?>
-        <?php $postConfig = parse_title($this->content);?>
-        <?php if ($postConfig): ?>
-        isMenu2('auto');
-        <?php endif; ?>
-        <?php endif; ?>
+
         <?php if($this->options->isAutoNav == 'on'): ?>
         var b = document.getElementsByClassName('b');
         var w = document.getElementsByClassName('w');
@@ -421,6 +369,61 @@
     document.addEventListener('pjax:complete', loadAtfer);
     document.addEventListener("DOMContentLoaded", loadAtfer);
 </script>
+
+<script pjax>
+
+    <?php if ($this->is('post')): ?>
+    <?php $postConfig = parse_title($this->content);?>
+    <?php if ($postConfig): ?>
+    isMenu2('auto');
+    <?php endif; ?>
+    <?php endif; ?>
+    <?php if($this->is('post') || $this->is('page') ):?>
+    if ($('#main > article')) {
+        $(document).ready(function () {
+            var article = $('#main > article');
+            article.removeClass('hidden');
+            article.toggleClass('fadeInUp animated');
+            article.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function (e) {
+                $(e.target).removeClass('fadeInUp animated');
+
+            });
+
+        });
+    }
+    <?php endif;?>
+    <?php if($this->is('index')):?>
+    $(document).ready(function () {
+        var card = $('#main > ul > li > a.colorgradient-card');
+        card.removeClass('hidden');
+        card.toggleClass('zoomIn animated');
+        card.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function (e) {
+            $(e.target).removeClass('zoomIn animated');
+
+        });
+
+    });
+    <?php endif;?>
+
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<?php if ($this->options->analysis != null): ?>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=<?php $this->options->analysis() ?>"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', '<?php $this->options->analysis() ?>');
+
+    </script>
+<?php endif; ?>
+
 <div id="go-top">
     <i class="fas fa-arrow-up" style="
     position: absolute;
