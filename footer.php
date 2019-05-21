@@ -20,20 +20,20 @@
                         var years = days * 365;
                         var birthDay = Date.UTC(<?php $this->options->jstime();?>);
                         setInterval(function () {
-                            var today = new Date();
-                            var todayYear = today.getFullYear();
-                            var todayMonth = today.getMonth() + 1;
-                            var todayDate = today.getDate();
-                            var todayHour = today.getHours();
-                            var todayMinute = today.getMinutes();
-                            var todaySecond = today.getSeconds();
-                            var now = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
-                            var diff = now - birthDay;
-                            var diffYears = Math.floor(diff / years);
-                            var diffDays = Math.floor((diff / days));
-                            var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
-                            var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
-                            var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+                            let today = new Date();
+                            let todayYear = today.getFullYear();
+                            let todayMonth = today.getMonth() + 1;
+                            let todayDate = today.getDate();
+                            let todayHour = today.getHours();
+                            let todayMinute = today.getMinutes();
+                            let todaySecond = today.getSeconds();
+                            let now = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                            let diff = now - birthDay;
+                            let diffYears = Math.floor(diff / years);
+                            let diffDays = Math.floor((diff / days));
+                            let diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                            let diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+                            let diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
                             document.getElementById('showDays').innerHTML = "" + diffDays + "天" + diffHours + "小时" + diffMinutes + "分钟" + diffSeconds + "秒";
                         }, 1000);
                     </script>
@@ -95,11 +95,11 @@
     function loadAtfer() {
 
         <?php if($this->options->isAutoNav == 'on'): ?>
-        var b = document.getElementsByClassName('b');
-        var w = document.getElementsByClassName('w');
-        var menupgMargin = (b.length + w.length) * 28;
-        var srhboxMargin = (b.length + w.length + 3) * 28;
-        var menusrhWidth = (b.length + w.length - 1) * 28;
+        const b = document.getElementsByClassName('b');
+        const w = document.getElementsByClassName('w');
+        const menupgMargin = (b.length + w.length) * 28;
+        const srhboxMargin = (b.length + w.length + 3) * 28 + 30;
+        const menusrhWidth = (b.length + w.length - 1) * 28;
         document.getElementById('menu-page').style['margin-left'] = menupgMargin + 'px';
         document.getElementById('search-box').style['margin-left'] = srhboxMargin + 'px';
         document.getElementById('menu-search').style['width'] = menusrhWidth + 'px';
@@ -109,8 +109,8 @@
         <?php endif; ?>
 
         if (window.location.hash != '') {
-            var i = window.location.hash.indexOf('#comment');
-            var ii = window.location.hash.indexOf('#respond-post');
+            const i = window.location.hash.indexOf('#comment');
+            const ii = window.location.hash.indexOf('#respond-post');
             if (i != '-1' || ii != '-1') {
                 document.getElementById('btn-comments').innerText = 'hide comments';
                 document.getElementById('comments').style.maxHeight = 2000 + 'px';
@@ -160,7 +160,7 @@
         // 窗口改变时
         window.onresize = function () {
             showHeight = window.innerHeight;
-        }
+        };
 
         // document.getElementById('go-top').onclick = function (e) {
         //     document.getElementById('header').scrollIntoView({
@@ -169,15 +169,15 @@
         document.getElementById('go-top').onclick = function (e) {
             scrollSmoothTo(0);
             e.preventDefault()
-        }
+        };
 
         // 标题锚点平滑
         if (document.querySelector('#torTree > div > div')) {
             const torArr = document.querySelectorAll('#torTree > div > div > a');
 
             function getElementTop(element) {
-                var actualTop = element.offsetTop;
-                var current = element.offsetParent;
+                let actualTop = element.offsetTop;
+                let current = element.offsetParent;
 
                 while (current !== null) {
                     actualTop += current.offsetTop;
@@ -187,9 +187,9 @@
                 return actualTop;
             }
 
-            for (var i = 0; i < torArr.length; i++) {
+            for (let i = 0; i < torArr.length; i++) {
                 torArr[i].onclick = function (e) {
-                    var Top = getElementTop(document.getElementById(`${this.getAttribute('href').replace(/^#/, '')}`)) - 10;
+                    const Top = getElementTop(document.getElementById(`${this.getAttribute('href').replace(/^#/, '')}`)) - 10;
                     /*const timer = setInterval(
                         () => {
                             let curTop = document.documentElement.scrollTop;
@@ -230,9 +230,9 @@
 
         // 委派事件 点击导航后淡出
 
-        var menu = document.querySelector('#menu-page');
+        const menu = document.querySelector('#menu-page');
         menu.addEventListener("click", function (e) {
-            var target = e.target;
+            const target = e.target;
 
             if (target.nodeName.toLocaleLowerCase() === 'li') {
                 isMenu1();
@@ -241,18 +241,18 @@
     }
 
 
-    var scrollSmoothTo = function (position) {
+    const scrollSmoothTo = function (position) {
         if (!window.requestAnimationFrame) {
             window.requestAnimationFrame = function (callback, element) {
                 return setTimeout(callback, 17);
             };
         }
         // 当前滚动高度
-        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
         // 滚动step方法
-        var step = function () {
+        const step = function () {
             // 距离目标滚动距离
-            var distance = position - scrollTop;
+            let distance = position - scrollTop;
             // 目标滚动位置
             scrollTop = scrollTop + distance / 5;
             if (Math.abs(distance) < 1) {
@@ -267,6 +267,12 @@
 
 
     function isMenu() {
+        document.getElementById('menu-page').style.cssText = 'display: block;';
+        const menuList = document.querySelectorAll('#menu-page li');
+        for (let i of menuList) {
+            i.style.display = 'none'
+        }
+
         if (document.getElementById('menu-1').style.display == 'inline') {
             $('#search-box').fadeOut(200);
             $('#menu-page').fadeOut(200);
@@ -281,12 +287,31 @@
     }
 
     function isMenu1() {
+        //
+        // if (document.getElementById('menu-page').style.display == 'block') {
+        //     $('#menu-page').fadeOut(300);
+        //
+        // } else {
+        // $('#menu-page').fadeIn(300);
 
-        if (document.getElementById('menu-page').style.display == 'block') {
-            $('#menu-page').fadeOut(300);
 
+        const menuPage = $('#menu-page li');
+        if (menuPage[0].style.display === 'none') {
+            let i = 1;
+            for (let menu of menuPage) {
+                setTimeout(function () {
+                    $(menu).fadeIn(300);
+                }, 100 * i);
+                i++;
+            }
         } else {
-            $('#menu-page').fadeIn(300);
+            let i = menuPage.length;
+            for (let menu of menuPage) {
+                setTimeout(function () {
+                    $(menu).fadeOut(300);
+                }, 100 * i);
+                i--;
+            }
         }
     }
 
@@ -340,7 +365,7 @@
 
     function footerPosition() {
         $("footer").removeClass("fixed-bottom");
-        var contentHeight = document.body.scrollHeight,
+        let contentHeight = document.body.scrollHeight,
             winHeight = window.innerHeight;
         if (document.getElementsByClassName("post-content")[0]) {
             var winImgNum = document.getElementsByClassName("post-content")[0].getElementsByTagName("img").length;
@@ -355,7 +380,7 @@
     footerPosition();
     $(window).resize(footerPosition);
 
-    var pjax = new Pjax({
+    new Pjax({
         selectors: [
             "title",
             "meta[name=description]",
@@ -365,7 +390,7 @@
         ],
         cacheBust: false,
 
-    })
+    });
     document.addEventListener('pjax:complete', loadAtfer);
     document.addEventListener("DOMContentLoaded", loadAtfer);
 </script>
@@ -381,7 +406,7 @@
     <?php if($this->is('post') || $this->is('page') ):?>
     if ($('#main > article')) {
         $(document).ready(function () {
-            var article = $('#main > article');
+            const article = $('#main > article');
             article.removeClass('hidden');
             article.toggleClass('fadeInUp animated');
             article.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function (e) {
@@ -394,7 +419,7 @@
     <?php endif;?>
     <?php if($this->is('index')):?>
     $(document).ready(function () {
-        var card = $('#main > ul > li > a.colorgradient-card');
+        const card = $('#main > ul > li > a.colorgradient-card');
         card.removeClass('hidden');
         card.toggleClass('zoomIn animated');
         card.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function (e) {

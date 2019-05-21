@@ -937,7 +937,7 @@ li {
 @media (max-width: 460px) {
     #search-box {
         margin-left: 0 !important;
-        margin-top: 22px;
+        margin-top: 32px;
     }
 }
 

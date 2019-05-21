@@ -108,27 +108,27 @@ if ($this->options->style_BG) {
                     <!-- 标题结束 -->
 
                     <a id="btn-menu" href="javascript:isMenu();">
-                        <span class="b">·</span>
+                        <span class="b"><i class="fas fa-angle-right"></i></span>
                     </a>
                     <a href="javascript:isMenu1();">
                         <?php if ($this->options->isIconNav == 'on'): ?>
                             <span id="menu-1" class="bf"><i class="twa twa-flags"></i></span>
                         <?php else: ?>
-                            <span id="menu-1" class="bf">1</span>
+                            <span id="menu-1" class="bf"><i class="fas fa-book"></i></span>
                         <?php endif; ?>
                     </a>
                     <a href="javascript:isMenu2();">
                         <?php if ($this->options->isIconNav == 'on'): ?>
                             <span id="menu-2" class="bf"><i class="twa twa-evergreen-tree"></i></span>
                         <?php else: ?>
-                            <span id="menu-2" class="bf">2</span>
+                            <span id="menu-2" class="bf"><i class="far fa-compass"></i></span>
                         <?php endif; ?>
                     </a>
                     <a href="javascript:isMenu3();">
                         <?php if ($this->options->isIconNav == 'on'): ?>
                             <span id="menu-3" class="bf"><i class="twa twa-mag"></i></span>
                         <?php else: ?>
-                            <span id="menu-3" class="bf">3</span>
+                            <span id="menu-3" class="bf"><i class="fas fa-search"></i></span>
                         <?php endif; ?>
                     </a>
                 </div>
