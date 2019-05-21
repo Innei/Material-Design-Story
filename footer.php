@@ -393,6 +393,7 @@
     });
     document.addEventListener('pjax:complete', loadAtfer);
     document.addEventListener("DOMContentLoaded", loadAtfer);
+    document.addEventListener("pjax:complete", window.onload);
 </script>
 
 <script pjax>
@@ -406,7 +407,7 @@
     <?php if($this->is('post') || $this->is('page') ):?>
     if ($('#main > article')) {
         $(document).ready(function () {
-            const article = $('#main > article');
+            var article = $('#main > article');
             article.removeClass('hidden');
             article.toggleClass('fadeInUp animated');
             article.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function (e) {
@@ -419,7 +420,7 @@
     <?php endif;?>
     <?php if($this->is('index')):?>
     $(document).ready(function () {
-        const card = $('#main > ul > li > a.colorgradient-card');
+        var card = $('#main > ul > li > a.colorgradient-card');
         card.removeClass('hidden');
         card.toggleClass('zoomIn animated');
         card.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function (e) {
