@@ -20,20 +20,20 @@
                         var years = days * 365;
                         var birthDay = Date.UTC(<?php $this->options->jstime();?>);
                         setInterval(function () {
-                            var today = new Date();
-                            var todayYear = today.getFullYear();
-                            var todayMonth = today.getMonth() + 1;
-                            var todayDate = today.getDate();
-                            var todayHour = today.getHours();
-                            var todayMinute = today.getMinutes();
-                            var todaySecond = today.getSeconds();
-                            var now = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
-                            var diff = now - birthDay;
-                            var diffYears = Math.floor(diff / years);
-                            var diffDays = Math.floor((diff / days));
-                            var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
-                            var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
-                            var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+                            let today = new Date();
+                            let todayYear = today.getFullYear();
+                            let todayMonth = today.getMonth() + 1;
+                            let todayDate = today.getDate();
+                            let todayHour = today.getHours();
+                            let todayMinute = today.getMinutes();
+                            let todaySecond = today.getSeconds();
+                            let now = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                            let diff = now - birthDay;
+                            let diffYears = Math.floor(diff / years);
+                            let diffDays = Math.floor((diff / days));
+                            let diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                            let diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+                            let diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
                             document.getElementById('showDays').innerHTML = "" + diffDays + "天" + diffHours + "小时" + diffMinutes + "分钟" + diffSeconds + "秒";
                         }, 1000);
                     </script>
@@ -88,20 +88,18 @@
 <script src="<?php $this->options->themeUrl('assert/js/prism.js'); ?>" pjax></script>
 <script src="<?php $this->options->themeUrl('assert/js/zoom-vanilla.min.js'); ?>" pjax></script>
 
-<script pjax>
-    window.onload = function () {
-        <?php if ($this->is('post')): ?>
-        <?php $postConfig = parse_title($this->content);?>
-        <?php if ($postConfig): ?>
-        isMenu2('auto');
-        <?php endif; ?>
-        <?php endif; ?>
+
+<script>
+
+
+    function loadAtfer() {
+
         <?php if($this->options->isAutoNav == 'on'): ?>
-        var b = document.getElementsByClassName('b');
-        var w = document.getElementsByClassName('w');
-        var menupgMargin = (b.length + w.length) * 28;
-        var srhboxMargin = (b.length + w.length + 3) * 28;
-        var menusrhWidth = (b.length + w.length - 1) * 28;
+        const b = document.getElementsByClassName('b');
+        const w = document.getElementsByClassName('w');
+        const menupgMargin = (b.length + w.length) * 28;
+        const srhboxMargin = (b.length + w.length + 3) * 28 + 30;
+        const menusrhWidth = (b.length + w.length - 1) * 28;
         document.getElementById('menu-page').style['margin-left'] = menupgMargin + 'px';
         document.getElementById('search-box').style['margin-left'] = srhboxMargin + 'px';
         document.getElementById('menu-search').style['width'] = menusrhWidth + 'px';
@@ -111,8 +109,8 @@
         <?php endif; ?>
 
         if (window.location.hash != '') {
-            var i = window.location.hash.indexOf('#comment');
-            var ii = window.location.hash.indexOf('#respond-post');
+            const i = window.location.hash.indexOf('#comment');
+            const ii = window.location.hash.indexOf('#respond-post');
             if (i != '-1' || ii != '-1') {
                 document.getElementById('btn-comments').innerText = 'hide comments';
                 document.getElementById('comments').style.maxHeight = 2000 + 'px';
@@ -121,55 +119,65 @@
         // go-top
 
         let goTop = document.getElementById('go-top');
-        // 判断是否点击
-        let flag = 0;
+        // // 判断是否点击
+        // let flag = 0;
         // alert(totalHeight);
         // 获取正在显示的长度
         let showHeight = window.innerHeight;
         let container = document.querySelector('html');
         // 判断滚动条高度需要添加 overflow: auto 属性
         window.onscroll = function () {
-            if (container.scrollTop > showHeight && flag === 0) {
+            if (container.scrollTop > showHeight) {
                 goTop.style.transform = 'scale(1)';
             } else if (container.scrollTop <= showHeight) {
-                goTop.style.transform = '';
+                goTop.removeAttribute('style');
             }
+            /*
+                        // 点击时, 回到 0,0点
+                        goTop.onclick = function () {
+                            goTop.style.transform = '';
+                            flag = 1;
+                            let curTop = container.scrollTop;
+                            // 平滑移动
+                            let timer = setInterval(function () {
+                                // 如果到达 0,0 取消定时器
+                                if (container.scrollTop === 0) {
+                                    clearInterval(timer);
 
-            // 点击时, 回到 0,0点
-            goTop.onclick = function () {
-                goTop.style.transform = '';
-                flag = 1;
-                let curTop = container.scrollTop;
-                // 平滑移动
-                let timer = setInterval(function () {
-                    // 如果到达 0,0 取消定时器
-                    if (container.scrollTop === 0) {
-                        clearInterval(timer);
+                                    // 别忘了设回 0
+                                    flag = 0;
+                                }
+                                container.scrollTo(0, curTop);
+                                // 速度设定
+                                curTop -= 50;
 
-                        // 别忘了设回 0
-                        flag = 0;
-                    }
-                    container.scrollTo(0, curTop);
-                    // 速度设定
-                    curTop -= 50;
+                            }, 10);
 
-                }, 10);
-            };
+                        };*/
         };
 
 
         // 窗口改变时
         window.onresize = function () {
             showHeight = window.innerHeight;
-        }
+        };
 
+        // document.getElementById('go-top').onclick = function (e) {
+        //     document.getElementById('header').scrollIntoView({
+        //         behavior: "smooth"
+        //     })
+        document.getElementById('go-top').onclick = function (e) {
+            scrollSmoothTo(0);
+            e.preventDefault()
+        };
 
+        // 标题锚点平滑
         if (document.querySelector('#torTree > div > div')) {
             const torArr = document.querySelectorAll('#torTree > div > div > a');
 
             function getElementTop(element) {
-                var actualTop = element.offsetTop;
-                var current = element.offsetParent;
+                let actualTop = element.offsetTop;
+                let current = element.offsetParent;
 
                 while (current !== null) {
                     actualTop += current.offsetTop;
@@ -179,10 +187,10 @@
                 return actualTop;
             }
 
-            for (var i = 0; i < torArr.length; i++) {
+            for (let i = 0; i < torArr.length; i++) {
                 torArr[i].onclick = function (e) {
-                    var Top = getElementTop(document.getElementById(`${this.getAttribute('href').replace(/^#/, '')}`)) - 10;
-                    const timer = setInterval(
+                    const Top = getElementTop(document.getElementById(`${this.getAttribute('href').replace(/^#/, '')}`)) - 10;
+                    /*const timer = setInterval(
                         () => {
                             let curTop = document.documentElement.scrollTop;
 
@@ -202,14 +210,15 @@
                                 clearInterval(timer);
                             }
                         }
-                        , 10);
+                        , 10);*/
+                    scrollSmoothTo(Top);
 
                     e.preventDefault();
                 };
             }
         }
 
-        // 绑定时间 点击导航后淡出
+        /*// 绑定事件 点击导航后淡出
         var menu = document.querySelectorAll('#menu-page > a');
 
         for (var i = 0; i < menu.length; i++) {
@@ -217,11 +226,53 @@
                 isMenu1();
                 console.log(menu);
             }
+        }*/
+
+        // 委派事件 点击导航后淡出
+
+        const menu = document.querySelector('#menu-page');
+        menu.addEventListener("click", function (e) {
+            const target = e.target;
+
+            if (target.nodeName.toLocaleLowerCase() === 'li') {
+                isMenu1();
+            }
+        })
+    }
+
+
+    const scrollSmoothTo = function (position) {
+        if (!window.requestAnimationFrame) {
+            window.requestAnimationFrame = function (callback, element) {
+                return setTimeout(callback, 17);
+            };
         }
+        // 当前滚动高度
+        let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        // 滚动step方法
+        const step = function () {
+            // 距离目标滚动距离
+            let distance = position - scrollTop;
+            // 目标滚动位置
+            scrollTop = scrollTop + distance / 5;
+            if (Math.abs(distance) < 1) {
+                window.scrollTo(0, position);
+            } else {
+                window.scrollTo(0, scrollTop);
+                requestAnimationFrame(step);
+            }
+        };
+        step();
     };
 
 
     function isMenu() {
+        document.getElementById('menu-page').style.cssText = 'display: block;';
+        const menuList = document.querySelectorAll('#menu-page li');
+        for (let i of menuList) {
+            i.style.display = 'none'
+        }
+
         if (document.getElementById('menu-1').style.display == 'inline') {
             $('#search-box').fadeOut(200);
             $('#menu-page').fadeOut(200);
@@ -236,12 +287,31 @@
     }
 
     function isMenu1() {
+        //
+        // if (document.getElementById('menu-page').style.display == 'block') {
+        //     $('#menu-page').fadeOut(300);
+        //
+        // } else {
+        // $('#menu-page').fadeIn(300);
 
-        if (document.getElementById('menu-page').style.display == 'block') {
-            $('#menu-page').fadeOut(300);
 
+        const menuPage = $('#menu-page li');
+        if (menuPage[0].style.display === 'none') {
+            let i = 1;
+            for (let menu of menuPage) {
+                setTimeout(function () {
+                    $(menu).fadeIn(300);
+                }, 100 * i);
+                i++;
+            }
         } else {
-            $('#menu-page').fadeIn(300);
+            let i = menuPage.length;
+            for (let menu of menuPage) {
+                setTimeout(function () {
+                    $(menu).fadeOut(300);
+                }, 100 * i);
+                i--;
+            }
         }
     }
 
@@ -295,7 +365,7 @@
 
     function footerPosition() {
         $("footer").removeClass("fixed-bottom");
-        var contentHeight = document.body.scrollHeight,
+        let contentHeight = document.body.scrollHeight,
             winHeight = window.innerHeight;
         if (document.getElementsByClassName("post-content")[0]) {
             var winImgNum = document.getElementsByClassName("post-content")[0].getElementsByTagName("img").length;
@@ -310,8 +380,30 @@
     footerPosition();
     $(window).resize(footerPosition);
 
+    new Pjax({
+        selectors: [
+            "title",
+            "meta[name=description]",
+            "#pjax",
+            "[pjax]",
+            ".hitokoto"
+        ],
+        cacheBust: false,
 
+    });
+    document.addEventListener('pjax:complete', loadAtfer);
+    document.addEventListener("DOMContentLoaded", loadAtfer);
+    document.addEventListener("pjax:complete", window.onload);
+</script>
 
+<script pjax>
+
+    <?php if ($this->is('post')): ?>
+    <?php $postConfig = parse_title($this->content);?>
+    <?php if ($postConfig): ?>
+    isMenu2('auto');
+    <?php endif; ?>
+    <?php endif; ?>
     <?php if($this->is('post') || $this->is('page') ):?>
     if ($('#main > article')) {
         $(document).ready(function () {
@@ -358,23 +450,6 @@
     </script>
 <?php endif; ?>
 
-<script>
-    var pjax = new Pjax({
-        selectors: [
-            "title",
-            "meta[name=description]",
-            "#pjax",
-            "[pjax]",
-            ".hitokoto"
-        ],
-        cacheBust: false,
-
-    })
-    document.addEventListener('pjax:complete', function () {
-            window.onload();
-        }
-    )
-</script>
 <div id="go-top">
     <i class="fas fa-arrow-up" style="
     position: absolute;
