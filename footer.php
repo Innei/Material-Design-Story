@@ -393,7 +393,7 @@
     });
     document.addEventListener('pjax:complete', loadAtfer);
     document.addEventListener("DOMContentLoaded", loadAtfer);
-    document.addEventListener("pjax:complete", window.onload);
+
 </script>
 
 <script pjax>

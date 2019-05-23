@@ -45,7 +45,7 @@ $this->need('header.php');
 
 
             var says = document.querySelectorAll('say');
-            window.onload = function () {
+            (function(){
                 for (let say of says) {
 
                     toggleClass(say, 'swing animated');
@@ -58,7 +58,7 @@ $this->need('header.php');
                     });
 
                 }
-            };
+            })();
 
             function once(dom, event, callback) {
                 const handle = function () {
@@ -90,7 +90,7 @@ $this->need('header.php');
                     addClass(obj, cls);
                 }
             }
-
+            //document.addEventListener("pjax:complete", window.onload);
 
         </script>
     </div>
