@@ -50,31 +50,31 @@
     }
 }
 
-#main > ul > li:nth-child(2) > .colorgradient-card {
+#main > ul > li:nth-child(2n) > .colorgradient-card {
     background-image: linear-gradient(153deg, rgba(226, 212, 212, 0.16) 0%, #fffdff 95%);
 }
 
-#main > ul > li:nth-child(3) > .colorgradient-card {
+#main > ul > li:nth-child(3n) > .colorgradient-card {
     background-image: linear-gradient(153deg, rgba(255, 140, 169, 0.16) 0%, #ebebf3 95%);
 }
 
-#main > ul > li:nth-child(4) > .colorgradient-card {
+#main > ul > li:nth-child(4n) > .colorgradient-card {
     background-image: linear-gradient(153deg, rgba(222, 255, 157, 0.34) 0%, #d9e7e4 95%);
 }
 
-#main > ul > li:nth-child(5) > .colorgradient-card {
+#main > ul > li:nth-child(5n) > .colorgradient-card {
     background-image: linear-gradient(153deg, rgba(73, 220, 249, 0.16) 0%, #fff8f8 95%);
 }
 
-#main > ul > li:nth-child(6) > .colorgradient-card {
+#main > ul > li:nth-child(6n) > .colorgradient-card {
     background-image: linear-gradient(153deg, rgba(249, 149, 148, 0.16) 0%, #f7f4ee 95%);
 }
 
-#main > ul > li:nth-child(7) > .colorgradient-card {
+#main > ul > li:nth-child(7n) > .colorgradient-card {
     background-image: linear-gradient(153deg, rgba(40, 249, 97, 0.16) 0%, #eee6eb 95%);
 }
 
-#main > ul > li:nth-child(8) > .colorgradient-card {
+#main > ul > li:nth-child(8n) > .colorgradient-card {
     background-image: linear-gradient(153deg, rgba(30, 44, 249, 0.16) 0%, #e1f3f0 95%);
 }
 
@@ -91,3 +91,56 @@
 
 }
 
+/*动画*/
+.fade-in {
+    animation: fade-in-bottom .5s linear;
+}
+
+.fade-out {
+    animation: fade-out-up .5s linear;
+}
+
+
+@keyframes fade-in-bottom {
+    from {
+        opacity: 0;
+        transform: translateY(-20px)
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+@-webkit-keyframes fade-in-bottom {
+    from {
+        opacity: 0;
+        transform: translateY(-20px)
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+@keyframes fade-out-up {
+    from {
+        opacity: 1;
+        transform: translateY(0)
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px)
+    }
+}
+
+@-webkit-keyframes fade-out-up {
+    from {
+        opacity: 1;
+        transform: translateY(0)
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px)
+    }
+}

@@ -325,7 +325,32 @@
             }
         } else {
             if (c != 'auto') {
-                alert('人家是导航树哦！只有在特定的文章页面才会出现哦...');
+
+                const message = document.createElement('div');
+                message.innerHTML = `人家是导航树哦！只有在特定的文章页面才会出现哦...`;
+                message.style.cssText = `
+                position: fixed;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                top: 3em;
+                left: 0;
+                right: 0;
+                margin: 0 auto;
+                border-radius: 24px;
+                background-color: #f1c40f;
+                width: 450px;
+                height: 53px;
+                box-shadow: 0 3px 15px 10px rgba(87,87,87,.2), 0 1px 3px -6px rgba(87,87,87,.2) inset;
+                `.trim();
+                message.classList.add('fade-in');
+                document.body.appendChild(message);
+                setTimeout(function () {
+                    message.classList.replace('fade-in', 'fade-out');
+                    setTimeout(function () {
+                        message.remove();
+                    }, 450);
+                }, 2000)
             }
         }
     }
@@ -337,6 +362,22 @@
             $('#search-box').fadeIn(300);
         }
     }
+
+    // 点击其他区域关闭菜单
+    $(document).click(function (e) {
+        const pop = $('#menu-page > a > li');
+        if (!pop.is(e.target) && pop.has(e.target).length === 0 && !$(e.target).is($('#menu-1')) && !$(e.target).is($('#menu-1 > i'))) {
+            const menuPage = $('#menu-page li');
+            let i = menuPage.length;
+            for (let menu of menuPage) {
+                setTimeout(function () {
+                    $(menu).fadeOut(300);
+                }, 100 * i);
+                i--;
+            }
+        }
+    })
+
 
     // 评论区过度
 
