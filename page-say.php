@@ -90,7 +90,18 @@ $this->need('header.php');
                     addClass(obj, cls);
                 }
             }
-            //document.addEventListener("pjax:complete", window.onload);
+
+            (function () {
+                if (/Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent)) {
+
+                    for (let i of document.querySelectorAll('#say > article > say > p:nth-child(1)')) {
+                        i.style.WebkitFontSmoothing = 'antialiased';
+                    }
+                    for (let i of document.querySelectorAll('say')) {
+                        i.style.boxShadow = 'none';
+                    }
+                }
+            })();
 
         </script>
     </div>

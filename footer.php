@@ -405,6 +405,11 @@
     <?php endif; ?>
     <?php endif; ?>
     <?php if($this->is('post') || $this->is('page') ):?>
+    (function () {
+        if (/Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent)) {
+            document.querySelector('#main > article').style.WebkitFontSmoothing = 'antialiased';
+        }
+    })();
     if ($('#main > article')) {
         $(document).ready(function () {
             var article = $('#main > article');
