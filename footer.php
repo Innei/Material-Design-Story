@@ -422,6 +422,7 @@
     $(window).resize(footerPosition);
 
     new Pjax({
+        elements: "a[href]:not([target=_blank]):not([onclick])",
         selectors: [
             "title",
             "meta[name=description]",
